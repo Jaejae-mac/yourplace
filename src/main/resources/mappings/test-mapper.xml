@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="AdminDAO">
+	<resultMap type="myAdmin" id="adminResult">
+		<id property="ano" column="ANO" />
+		<result property="testId" column="test_id" />
+		<result property="testPw" column="test_pw" />
+		<result property="testName" column="test_name" />
+		<result property="testRole" column="test_role" />
+	</resultMap>
+
+	
+	<select id="getAdmin" resultMap="adminResult">
+		SELECT * FROM testadmin where ano = #{ano}
+	</select>
+
+</mapper>
