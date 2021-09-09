@@ -3,11 +3,14 @@
 PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-	 <typeAliases>
+	<typeAliases>
 		<typeAlias type="com.yourplace.admin.login.vo.AdminVO"
 			alias="myAdmin" />
+		<typeAlias type="com.yourplace.host.login.vo.HostVO"
+			alias="myHost" />
 	</typeAliases>
 	<mappers>
 		<mapper resource="mappings/test-mapper.xml" />
+		<mapper resource="mappings/host/host-login-mapping.xml" />
 	</mappers>
 </configuration>

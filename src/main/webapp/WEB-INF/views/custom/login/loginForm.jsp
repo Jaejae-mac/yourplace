@@ -79,7 +79,7 @@
 							<div class="input_container2 bottom"
 								style="width: 480px; margin-left: 50px;"
 								v-bind:class="{'focus':idfocus===true}">
-								<input type="id" placeholder="아이디" value="" id="id" name="id"
+								<input type="id" placeholder="아이디" value="" id="id" name="userId"
 									v-model="id" required>
 								<div class="delete" v-show="id.length > 0" v-on:click="id"= ''">
 									<img
@@ -93,7 +93,7 @@
 								style="width: 480px; margin-top: 10px; margin-left: 50px;"
 								v-bind:class="{'focus':passwordfocus===true}">
 								<input type="password" placeholder="비밀번호" value="" id="password"
-									name="password" v-model="password" required>
+									name="userPw" v-model="password" required>
 								<div class="delete" style="margin-left: 50px;"
 									v-show="password.length > 0" v-on:click="password = ''">
 									<img
@@ -186,6 +186,7 @@
 
 	<!--input 태그의 아이디와 온클릭 속성에 지정된 함수명이 같으면 안된다.-->
 	<script>
+	//아래 함수 3개는 form태그의 액션을 변경하여 사용하는 JS 방법이다.
 		function login_guest_do() {
 			console.log("guest btn click");
 			
