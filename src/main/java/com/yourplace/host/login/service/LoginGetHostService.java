@@ -4,5 +4,5 @@ import com.yourplace.host.login.vo.HostVO;
 
 
 public interface LoginGetHostService {
-	HostVO getHost(HostVO vo);
+	int getHost(HostVO vo);
 }

@@ -23,7 +23,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 	<select id="getHost" resultMap="hostResult">
-		SELECT user_pw FROM member WHERE user_id = #{userId}
+		SELECT * FROM member WHERE user_id = #{userId}
 	</select>
 
 </mapper>

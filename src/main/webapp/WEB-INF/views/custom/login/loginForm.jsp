@@ -1,6 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<!-- 전달된 파라미터가 0 이라면 아이디또는 비밀번호의 불일치 이므로. -->
+<c:if test="${param.result == '0' }">
+	<script>
+	//alert 를 내보낸다.
+		alert('아이디 또는 비밀번호를 확인해주세요.');
+	</script>
+</c:if>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,7 +52,6 @@
 	cursor: pointer;
 }
 </style>
-
 </head>
 <body>
 
