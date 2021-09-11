@@ -8,9 +8,12 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 			alias="myAdmin" />
 		<typeAlias type="com.yourplace.host.login.vo.HostVO"
 			alias="myHost" />
+		<typeAlias type="com.yourplace.custom.login.vo.UserVO"
+			alias="myUser" />
 	</typeAliases>
 	<mappers>
 		<mapper resource="mappings/test-mapper.xml" />
 		<mapper resource="mappings/host/host-login-mapping.xml" />
+		<mapper resource="mappings/custom/custom-login-mapping.xml" />
 	</mappers>
 </configuration>
