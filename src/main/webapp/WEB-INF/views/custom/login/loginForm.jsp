@@ -73,7 +73,7 @@
 					style="width: 580px; border-radius: 10px; border: solid 1px #dfe2e7; background-color: #ffffff; padding: 40px 50px;">
 					<div class="h_column_center"
 						style="margin-bottom: 72px; width: 100%;">
-						<img src="<c:url value="/resources/img/logo_examp.png" />"
+						<img src="<c:url value="/resources/img/logo/logo.png" />"
 							style="width: 150px; height: 38px; object-fit: contain;" />
 					</div>
 
@@ -165,7 +165,10 @@
 							<!-- original : "window.location.href='/register'" -->
 							<p
 								style="margin-left: 8px; margin-right: 8px; font-size: 12px; font-weight: 500; font-stretch: normal; font-style: normal; line-height: 1.17; letter-spacing: normal; text-align: right; color: var(- -blue-030); cursor: pointer;"
-								onclick="window.location.href='register.html'">회원가입</p>
+								onclick="callRegisterFormUser()">회원가입</p>
+							<p
+							style="margin-left: 8px; margin-right: 8px; font-size: 12px; font-weight: 500; font-stretch: normal; font-style: normal; line-height: 1.17; letter-spacing: normal; text-align: right; color: var(- -blue-030); cursor: pointer;"
+							onclick="callRegisterFormHost()">호스트 회원가입</p>
 						</div>
 					</div>
 
@@ -196,7 +199,7 @@
 	<script>
 	//아래 함수 3개는 form태그의 액션을 변경하여 사용하는 JS 방법이다.
 		function login_guest_do() {
-			console.log("guest btn click");
+			$("#form_login").attr("action", "/login.do").submit();
 			
 		}
 		function loginHostHdo() {
@@ -206,6 +209,12 @@
 		function loginGuestKakaoDo() {
 			console.log("kakao btn click");
 			
+		}
+		function callRegisterFormUser(){
+			location.href="/register.do";
+		}
+		function callRegisterFormHost(){
+			location.href="/register.hdo";
 		}
 	</script>
 </body>

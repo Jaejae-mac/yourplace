@@ -25,6 +25,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getUserId" resultMap="userResult">
 		SELECT user_id FROM member WHERE user_id = #{userId}
 	</select>
+	<select id="getUser" resultMap="userResult">
+		SELECT * FROM member WHERE user_id = #{userId}
+	</select>
 	<insert id="insertUser" parameterType="myUser">
 		INSERT INTO member(
 				user_id,
