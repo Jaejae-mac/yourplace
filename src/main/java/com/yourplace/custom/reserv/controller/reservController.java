@@ -30,44 +30,41 @@ public class ReservController {
 		mav.setViewName("placeDetail");
 		return mav;
 	}
-//	
-//	@RequestMapping(value="/startingReserv.do", method=RequestMethod.POST)
-//	public ModelAndView reserv() throws Exception{
-//		ModelAndView mav = new ModelAndView();
-//		mav.setViewName("startingReserv");
-//		return mav;
-//	}
-//	
-//	
 
-//	@RequestMapping(value = "startingReserv.do",  method=RequestMethod.POST)
-//	public void getReservDate(Locale locale, Model model, String date, String startTime, String endTime,String person) {
-//		
-//		
-//		System.out.println(date);
-//		System.out.println(startTime);
-//		System.out.println(endTime);
-//		System.out.println(person);
-//	}
-//
-//	
-
+	
 	@RequestMapping(value="/startingReserv.do", method= RequestMethod.POST)
 	public ModelAndView reservRequest(HttpServletRequest request) {
-		String reservdate = request.getParameter("date");
+		String reserve = request.getParameter("date");
+		String[] reserveD = reserve.split("-");
+		
+		int year = Integer.parseInt(reserveD[0]);
+		int month = Integer.parseInt(reserveD[1]);
+		int date = Integer.parseInt(reserveD[2]);
+		
+	
 		String person = request.getParameter("person");
-		String start = request.getParameter("startTime");
-		String end = request.getParameter("endTime");
-		System.out.println("요청 날짜" + reservdate);
+
+		String start = request.getParameter("startTime"); 		//시작 시간
+		String[] time1 = start.split(":");
+		int sttime = Integer.parseInt(time1[0]);
+		System.out.println(sttime);
+	
+		String end = request.getParameter("endTime"); //끝나는 시간
+		String[] time2 = end.split(":");
+		int endtime = Integer.parseInt(time2[0]);
+		System.out.println(endtime);
+
 		System.out.println("인원수" + person);
-		System.out.println("시작 시간 :" + start);
-		System.out.println("끝나는 시간" + end);
+	
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("startingReserv");
-		mav.addObject("date", reservdate);
+
 		mav.addObject("personNum", person);
-		mav.addObject("startTime", start);
-		mav.addObject("endTime", end);
+		mav.addObject("reserveYear", year);
+		mav.addObject("reserveMonth", month);
+		mav.addObject("reserveDate", date);
+		mav.addObject("startTime", sttime);
+		mav.addObject("endTime", endtime);
 		return mav;
 	}
 	
@@ -87,10 +84,31 @@ public class ReservController {
 		String email = request.getParameter("email");
 		String purpose = request.getParameter("reservationPurpose");
 		String uRequest = request.getParameter("request");
-		String reservdate = request.getParameter("date");
+		
+		String reserveYear = request.getParameter("reserveY");
+		String reserveMonth = request.getParameter("reserveM");
+		String reserveDate = request.getParameter("reserveD");
+		
+		int year = Integer.parseInt(reserveYear);
+		int month = Integer.parseInt(reserveMonth);
+		int date = Integer.parseInt(reserveDate);
+		
+		System.out.println(year);
+		System.out.println(month);
+		System.out.println(date);
+		
 		String person = request.getParameter("person");
-		String start = request.getParameter("startTime");
-		String end = request.getParameter("endTime");
+		
+		String start = request.getParameter("startTime"); 		//시작 시간
+		String[] time1 = start.split(":");
+		int sttime = Integer.parseInt(time1[0]);
+		System.out.println(sttime);
+	
+		String end = request.getParameter("endTime"); //끝나는 시간
+		String[] time2 = end.split(":");
+		int endtime = Integer.parseInt(time2[0]);
+		System.out.println(endtime);
+
 		System.out.println(reservUName);
 		System.out.println(phone1);
 		System.out.println(phone2);
@@ -98,6 +116,7 @@ public class ReservController {
 		System.out.println(email);
 		System.out.println(uRequest);
 		System.out.println(purpose);
+		
 		mav.addObject("reservUserName", reservUName);
 		mav.addObject("phone1", phone1);
 		mav.addObject("phone2", phone2);
@@ -105,10 +124,13 @@ public class ReservController {
 		mav.addObject("email", email);
 		mav.addObject("purpose", purpose);
 		mav.addObject("request", uRequest);
-		mav.addObject("date", reservdate);
+		mav.addObject("reserveY", year);
+		mav.addObject("reserveM", month);
+		mav.addObject("reserveD", date);
+
 		mav.addObject("personNum", person);
-		mav.addObject("startTime", start);
-		mav.addObject("endTime", end);
+		mav.addObject("startTime", sttime);
+		mav.addObject("endTime", endtime);
 		return mav;
 		
 	}
