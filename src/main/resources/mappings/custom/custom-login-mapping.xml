@@ -3,8 +3,8 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="HostDAO">
-	<resultMap type="myHost" id="hostResult">
+<mapper namespace="UserDAO">
+	<resultMap type="myUser" id="userResult">
 		<id property="userNum" column="user_num" />
 		<result property="userType" column="user_type" />
 		<result property="userName" column="user_name" />
@@ -22,8 +22,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</resultMap>
 
 
-	<select id="getHost" resultMap="hostResult">
-		SELECT * FROM member WHERE user_id = #{userId}
+	<select id="getUserId" resultMap="userResult">
+		SELECT user_id FROM member WHERE user_id = #{userId}
 	</select>
-
+	<insert id="insertUser" parameterType="myUser">
+		INSERT INTO member(
+				user_id,
+				user_pw,
+				user_name,
+				user_nick_name,
+				user_tel,
+				user_email,
+				user_sex
+		)
+		VALUES(
+			#{userId},
+			#{userPw},
+			#{userName},
+			#{userNickName},
+			#{userTel},
+			#{userEmail},
+			#{userSex}
+		)
+	</insert>
 </mapper>

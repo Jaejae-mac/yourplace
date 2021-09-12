@@ -11,12 +11,21 @@ import com.yourplace.host.login.vo.HostVO;
 public class LoginGetHostServiceImpl implements LoginGetHostService {
 	@Autowired
 	private LoginHostDAO loginHostDAO;
-	
+
 	@Override
-	public HostVO getHost(HostVO vo) {
+	public int getHost(HostVO vo) {
 		HostVO hvo = loginHostDAO.getHost(vo);
-		System.out.println("[Get Host Service] "  + hvo.toString());
-		return null;
+		//아이디를 조건으로 DB select 시도 후 , 리턴받은 값이 Null 이 아니라면.
+		if (hvo != null) {
+			//리턴받은 객체의 비밀번호와 매개로 전달받은 객체의 비밀번호를 비교하여 같다면.
+			if (hvo.getUserPw().equals(vo.getUserPw())) {
+				//1을 리턴해주겠다. : 
+				return 1;
+			}
+		} else {
+			return 0;
+		}
+		return 0;
 	}
 
 }
