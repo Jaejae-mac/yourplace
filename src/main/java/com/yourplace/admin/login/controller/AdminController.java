@@ -16,9 +16,9 @@ public class AdminController {
 	@RequestMapping("/test.mdo")
 	public void test() {
 		AdminVO vo = new AdminVO();
-		vo.setAno(1);
-		vo.setTestId("testAdmin1");
-		vo.setTestName("git testing");
+		vo.setAdminNum(0);
+		vo.setAdminId("jey");
+		vo.setAdminPw("jey");
 		AdminVO admin = adminService.getAdmin(vo);
 		System.out.println(admin.toString());
 	}

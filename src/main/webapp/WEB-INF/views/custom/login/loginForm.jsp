@@ -131,35 +131,33 @@
 
 
 					<!-- 아이디, 비밀번호 찾기, 회원가입-->
-					<div style="margin-top: 20px;">
-						<!-- 아이디 찾기 : '/find/account.do '-->
-						<!-- original : "window.location.href='/password/email'" -->
-						<div
-							style="display: flex; flex-direction: row; align-items: center; justify-content: center">
-							<p
-								style="margin-left: 8px; margin-right: 8px; font-size: 12px; font-weight: 500; font-stretch: normal; font-style: normal; line-height: 1.17; letter-spacing: normal; color: var(- -grey-050); cursor: pointer;"
-								onclick="window.location.href='findaccount.html'">아이디 찾기</p>
-							<div
-								style="width: 10px; height: 1px; transform: rotate(90deg); background-color: var(- -grey-020);"></div>
+                        <div style="margin-top: 20px;"> <!-- 아이디 찾기 : '/find/account.do '-->
+                            <!-- original : "window.location.href='/password/email'" -->
+                            <div style="display: flex; flex-direction: row; align-items: center; justify-content: center">
+                                <p style="margin-left: 8px; margin-right: 8px;font-size: 12px;font-weight: 500;font-stretch: normal;font-style: normal;line-height: 1.17;letter-spacing: normal;color: var(--grey-050); cursor: pointer;"
+                                onclick="window.location.href='findaccount.html'">
+                                    아이디 찾기
+                                </p>
+                                <div style="width: 10px;height: 1px;transform: rotate(90deg);background-color: var(--grey-020);"></div>
 
-							<!-- original: "window.location.href='/service'" -->
-							<!-- <p style="margin-left: 8px; margin-right: 8px;font-size: 12px;font-weight: 500;font-stretch: normal;font-style: normal;line-height: 1.17;letter-spacing: normal;color: var(--grey-050); cursor: pointer;"
+                                <!-- original: "window.location.href='/service'" -->
+                                <!-- <p style="margin-left: 8px; margin-right: 8px;font-size: 12px;font-weight: 500;font-stretch: normal;font-style: normal;line-height: 1.17;letter-spacing: normal;color: var(--grey-050); cursor: pointer;"
                                 onclick="window.location.href='service.html'">
                                     고객센터
                                 </p> -->
-							<p
-								style="margin-left: 8px; margin-right: 8px; font-size: 12px; font-weight: 500; font-stretch: normal; font-style: normal; line-height: 1.17; letter-spacing: normal; color: var(- -grey-050); cursor: pointer;"
-								onclick="window.location.href='/findpassword.html'">비밀번호 찾기
-							</p>
-							<div
-								style="width: 10px; height: 1px; transform: rotate(90deg); background-color: var(- -grey-020);"></div>
+                                <p style="margin-left: 8px; margin-right: 8px;font-size: 12px;font-weight: 500;font-stretch: normal;font-style: normal;line-height: 1.17;letter-spacing: normal;color: var(--grey-050); cursor: pointer;"
+                                onclick="window.location.href='/findpassword.html'">
+                                    비밀번호 찾기
+                                </p>
+                                <div style="width: 10px;height: 1px;transform: rotate(90deg);background-color: var(--grey-020);"></div>
 
-							<!-- original : "window.location.href='/register'" -->
-							<p
-								style="margin-left: 8px; margin-right: 8px; font-size: 12px; font-weight: 500; font-stretch: normal; font-style: normal; line-height: 1.17; letter-spacing: normal; text-align: right; color: var(- -blue-030); cursor: pointer;"
-								onclick="window.location.href='register.html'">회원가입</p>
-						</div>
-					</div>
+                                <!-- original : "window.location.href='/register'" -->
+                                <p style="margin-left: 8px; margin-right: 8px;font-size: 12px;font-weight: 500;font-stretch: normal;font-style: normal;line-height: 1.17;letter-spacing: normal;text-align: right;color: var(--blue-030); cursor: pointer;"
+                                onclick="window.location.href='register.html'">
+                                    회원가입
+                                </p>
+                            </div>
+                        </div>
 
 					<div style="height: 110px;"></div>
 
