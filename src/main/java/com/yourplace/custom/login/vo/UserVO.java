@@ -24,5 +24,6 @@ public class UserVO {
 	private Date userRegDate;
 	private String userSmsAgree;
 	private String userEmailAgree;
+	private String kakaoId;
 	
 }

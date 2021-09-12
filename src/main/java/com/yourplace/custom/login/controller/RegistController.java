@@ -2,6 +2,8 @@ package com.yourplace.custom.login.controller;
 
 import java.util.Random;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -70,7 +72,7 @@ public class RegistController {
 		String password = vo.getUserPw();
 		String encodePw = passEncoder.encode(password);
 		vo.setUserPw(encodePw);
-		
+		System.out.println(vo.getKakaoId());
 		registService.insertUser(vo);
 		return "redirect:home.do";
 	}

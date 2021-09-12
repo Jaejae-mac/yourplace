@@ -10,5 +10,8 @@
 </head>
 <body>
 <h1>YOUR PLACE!</h1>
+<form action="/detail.do">
+	<input type="submit" value="GO" />
+</form>
 </body>
 </html>

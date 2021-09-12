@@ -5,7 +5,7 @@
 <!-- 전달된 파라미터가 0 이라면 아이디또는 비밀번호의 불일치 이므로. -->
 <c:if test="${param.result == '0' }">
 	<script>
-	//alert 를 내보낸다.
+		//alert 를 내보낸다.
 		alert('아이디 또는 비밀번호를 확인해주세요.');
 	</script>
 </c:if>
@@ -19,6 +19,10 @@
 	href="<c:url value="/resources/css/sample.css" />" />
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript"
+	src="https://developers.kakao.com/sdk/js/kakao.min.js" charset="utf-8"></script>
+
+
 
 <title>Login</title>
 <style>
@@ -51,7 +55,18 @@
 	width: 100%;
 	cursor: pointer;
 }
+
+.kakao_btn {
+	position: absolute;
+}
 </style>
+<script>
+	//초기화 시키기. 
+	$(document).ready(function() {
+		Kakao.init('1a2c83ee8f82dcabd30e0aba2dfd2c92');
+		Kakao.isInitialized();
+	});
+</script>
 </head>
 <body>
 
@@ -70,7 +85,7 @@
 				style="width: 100%; margin-top: 50px; margin-bottom: 200px;">
 
 				<div class="h_column_center"
-					style="width: 580px; border-radius: 10px; border: solid 1px #dfe2e7; background-color: #ffffff; padding: 40px 50px;">
+					style="width: 570px; border-radius: 10px; border: solid 1px #dfe2e7; background-color: #ffffff; padding: 40px 50px;">
 					<div class="h_column_center"
 						style="margin-bottom: 72px; width: 100%;">
 						<img src="<c:url value="/resources/img/logo/logo.png" />"
@@ -87,8 +102,8 @@
 							<div class="input_container2 bottom"
 								style="width: 480px; margin-left: 50px;"
 								v-bind:class="{'focus':idfocus===true}">
-								<input type="id" placeholder="아이디" value="" id="id" name="userId"
-									v-model="id" required>
+								<input type="id" placeholder="아이디" value="" id="id"
+									name="userId" v-model="id" required>
 								<div class="delete" v-show="id.length > 0" v-on:click="id"= ''">
 									<img
 										src="https://s3.hourplace.co.kr/web/images/icon/round_delete_g.svg"
@@ -128,12 +143,18 @@
 
 							<div
 								style="margin-top: 20px; height: 52px; border-radius: 8px; background-color: var(- -blue-020); display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; background: yellow">
-								<label for="login_kakao" class="login_kakao">카카오 로그인</label> <input
-									type="button" id="login_kakao" onclick="loginGuestKakaoDo()">
-								<!-- <img src="img/logo/kakao_login_medium_narrow copy.png" style="width: 100%; height: 100%;" /> -->
+								<label for="login_kakao" class="login_kakao"><img
+									src="<c:url value="/resources/img/kakao/kakao_login_btn.png" />"
+									alt="" style="height: 50px;"></label> <input type="button"
+									id="login_kakao" onclick="loginGuestKakaoDo()"
+									style="display: none;">
+									<input type="hidden" name="kakaoid" id="kakaoid" />
+								<input type="hidden" name="kakaoemail" id="kakaoemail" />
+								<input type="hidden" name="kakaoname" id="kakaoname" />
 							</div>
 
 						</form>
+						
 					</div>
 					<!-- 로그인 끝 -->
 
@@ -167,8 +188,8 @@
 								style="margin-left: 8px; margin-right: 8px; font-size: 12px; font-weight: 500; font-stretch: normal; font-style: normal; line-height: 1.17; letter-spacing: normal; text-align: right; color: var(- -blue-030); cursor: pointer;"
 								onclick="callRegisterFormUser()">회원가입</p>
 							<p
-							style="margin-left: 8px; margin-right: 8px; font-size: 12px; font-weight: 500; font-stretch: normal; font-style: normal; line-height: 1.17; letter-spacing: normal; text-align: right; color: var(- -blue-030); cursor: pointer;"
-							onclick="callRegisterFormHost()">호스트 회원가입</p>
+								style="margin-left: 8px; margin-right: 8px; font-size: 12px; font-weight: 500; font-stretch: normal; font-style: normal; line-height: 1.17; letter-spacing: normal; text-align: right; color: var(- -blue-030); cursor: pointer;"
+								onclick="callRegisterFormHost()">호스트 회원가입</p>
 						</div>
 					</div>
 
@@ -197,10 +218,10 @@
 
 	<!--input 태그의 아이디와 온클릭 속성에 지정된 함수명이 같으면 안된다.-->
 	<script>
-	//아래 함수 3개는 form태그의 액션을 변경하여 사용하는 JS 방법이다.
+		//아래 함수 3개는 form태그의 액션을 변경하여 사용하는 JS 방법이다.
 		function login_guest_do() {
 			$("#form_login").attr("action", "/login.do").submit();
-			
+
 		}
 		function loginHostHdo() {
 			console.log("host btn click");
@@ -208,13 +229,35 @@
 		}
 		function loginGuestKakaoDo() {
 			console.log("kakao btn click");
-			
+			window.Kakao.Auth.login({
+				/* scope:'profile,account_email', */
+				success:function(authObj){
+					window.Kakao.API.request({
+						url:'/v2/user/me',
+						success: res => {
+							const id = res.id;
+							const email = res.kakao_account.email;
+							const name = res.properties.nickname;
+							
+							console.log(id);
+							console.log(email);
+							console.log(name);
+							
+							$('#kakaoid').val(id);
+							$('#kakaoemail').val(email);
+							$('#kakaoname').val(name);
+							$("#form_login").attr("action", "/kakao/login.do").submit();
+						}
+					});
+				}
+			});
+
 		}
-		function callRegisterFormUser(){
-			location.href="/register.do";
+		function callRegisterFormUser() {
+			location.href = "/register.do";
 		}
-		function callRegisterFormHost(){
-			location.href="/register.hdo";
+		function callRegisterFormHost() {
+			location.href = "/register.hdo";
 		}
 	</script>
 </body>

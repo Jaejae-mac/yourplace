@@ -32,4 +32,11 @@ public class LoginDAOImpl implements LoginDAO {
 		return (UserVO) sqlSessionTemplate.selectOne("UserDAO.getUser", vo);
 	}
 
+	//카카오 회원 가입여부 판단. 
+	//카카오 아이디 값으로 판단하고 있으면 통과 없으면 회원가입 창으로 이동시킨다.
+	@Override
+	public UserVO getKakao(UserVO vo) {
+		return (UserVO) sqlSessionTemplate.selectOne("UserDAO.getKakao", vo);
+	}
+
 }
