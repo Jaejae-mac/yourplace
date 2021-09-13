@@ -20,5 +20,10 @@ public class ResetPasswordServiceImpl implements ResetPasswordService {
 			return "1";	//존재한다 = 1
 		}
 	}
+	//비밀번호 업데이트.
+	@Override
+	public void updatePassword(UserVO vo) {
+		loginDAO.updatePw(vo);
+	}
 
 }

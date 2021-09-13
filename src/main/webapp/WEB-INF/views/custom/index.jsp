@@ -23,6 +23,11 @@
 	swal('', '이메일을 전송했습니다\n메일을 확인해주세요.', "success");
 	</script>
 </c:if>
+<c:if test="${sendEmail == '2' }">
+	<script>
+	swal('', '비밀번호 변경을 완료했습니다.', "success");
+	</script>
+</c:if>
 		<div class="category_all"
 			style="position: fixed; top: 100px; left: 0; width: 100%; height: 100%; display: none; z-index: 9999; background-color: rgba(0, 0, 0, 0.2);"
 			onclick="toggle_category_all()">

@@ -158,6 +158,7 @@ main, #layoutAuthentication_content {
 											확인</p>
 									</div>
 								</div>
+								<input type="hidden" name="email" value="${param.email }"/>
 							</form>
 						</div>
 					</div>

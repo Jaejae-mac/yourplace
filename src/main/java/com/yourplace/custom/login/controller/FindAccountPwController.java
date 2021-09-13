@@ -3,6 +3,7 @@ package com.yourplace.custom.login.controller;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,6 +25,13 @@ public class FindAccountPwController {
 	@Autowired
 	private ResetPasswordService resetPasswordService;
 	//이메일 재설정 전 아이디, 이메일 입력 폼을 응답할 메서드.
+
+	//스프링 security비밀번호 암호화 및 비밀번호 대조.
+	@Autowired
+	private BCryptPasswordEncoder passEncoder;
+	//passEncoder.encode(암호화할 비밀번호.)
+	//if(passEncoder.matches(입력받은 비밀번호 ,암호화된 비밀번호) 로 비밀번호 비교 가능.
+	
 	@GetMapping("/reset/passwordForm.do")
 	public String pwForm() {
 		return "reset/pwForm";
@@ -67,8 +75,13 @@ public class FindAccountPwController {
 	//이용자가 받은 이메일 링크에서 새로운 비밀번호 입력 후
 	//확인 버튼을 눌러 요청을 보내면 처리할 컨트롤러.
 	@PostMapping("/reset/newpassword.do")
-	public String resetPwDo(@RequestParam("password") String password) {
-		System.out.println("hi");
-		return null;
+	public String resetPwDo(@RequestParam("password") String password,@RequestParam("email") String email,HttpServletRequest request) {
+		UserVO vo = new UserVO();
+		vo.setUserPw(passEncoder.encode(password));
+		vo.setUserEmail(email);
+		resetPasswordService.updatePassword(vo);
+		//비밀번호 변경은 sendEmail이라는 키 로 값은 2를 줘서 판단한다.
+		request.setAttribute("sendEmail", "2");
+		return "index";
 	}
 }

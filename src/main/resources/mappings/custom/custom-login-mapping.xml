@@ -65,4 +65,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		#{kakaoId}
 		)
 	</insert>
+	
+	<update id="updatePassword" parameterType="myUser">
+		UPDATE member SET user_pw=#{userPw} WHERE user_email=#{userEmail}
+	</update>
 </mapper>

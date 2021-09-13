@@ -108,9 +108,9 @@
 							</div>
 
 							<!-- 로그인 기능 show_login() -->
-							<div onclick="window.location.href='login.html'"
+							<div 
 								class="h_center h_header_button"
-								style="padding: 0px 13px; height: 50px; margin-left: 8px; cursor: pointer;">
+								style="padding: 0px 13px; height: 50px; margin-left: 8px; cursor: pointer;" onclick="location.href='/mypage.do'">
 								<p
 									style="font-style: normal; font-weight: normal; font-size: 15px; line-height: 20px; text-align: center; color: rgb(114, 120, 127);">
 									마이페이지</p>
