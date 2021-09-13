@@ -39,4 +39,14 @@ public class LoginDAOImpl implements LoginDAO {
 		return (UserVO) sqlSessionTemplate.selectOne("UserDAO.getKakao", vo);
 	}
 
+	//비밀번호 재설정 시 
+	//아이디와 이메일이 가입때 사용한 이메일이라면, 
+	//을 검증하기 위한 메서드.
+	@Override
+	public UserVO getIdEmail(UserVO vo) {
+		return (UserVO) sqlSessionTemplate.selectOne("UserDAO.getResetPw", vo);
+	}
+	
+	
+
 }

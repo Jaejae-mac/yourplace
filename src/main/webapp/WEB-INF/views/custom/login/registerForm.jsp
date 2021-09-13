@@ -20,7 +20,9 @@
 	
 <!-- SweetAlert Lib -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-<script src="sweetalert2.all.min.js" ></script>
+<!-- <script src="sweetalert2.all.min.js" ></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+<link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
 <script>
         $(document).ready(function () {
             var checkPw = false;
@@ -164,7 +166,7 @@
                     	type:"post",
                     	data:{"id":userId},
                     	success:function(responseData){
-                    		if(responseData === 'no'){
+                    		if(responseData === '1'){
                     			//버튼 클릭 했으나 중복되었기 때문에 false
                     			idChkBtn = false;
                     			//중복됨 : true
@@ -173,7 +175,7 @@
                       			  icon:'error',
                       			  title:'사용불가능한 아이디 입니다.',
                             });
-                    		}else if(responseData === 'ok'){
+                    		}else if(responseData === '0'){
                     			overlap = false;
                     			Swal.fire({
                         			  icon:'success',
@@ -416,11 +418,11 @@
 					style="margin-left: 4px; width: 6px; height: 6px">
 			</div>
 			<div class="radio-wrap input_container" style="margin-top: 0;">
-				<input type="radio" name="userSex" id="r2" value="male" checked />
-				<label for="r2"><span></span>남성</label> &nbsp;&nbsp;&nbsp; <input
-					type="radio" name="userSex" id="r1" value="female" /> <label
-					for="r1"><span></span>여성</label>
-			</div>
+                <input type="radio" name="userSex" id="r2" value="male" checked/>
+                <label for="r2">남성</label>
+                <input type="radio" name="userSex" id="r1" value="female" />
+                <label for="r1">여성</label>
+            </div>
 
 
 
@@ -598,7 +600,7 @@
             html: 'I will close in <b></b> milliseconds.'+
             '<br/><br/><input type="text" placeholder="number" id="auth_num" class="form-control">'+
             '<br/><input type="button" class="btn btn-primary" id="auth_num_btn" style="widht:100%;" value="인증 확인">',
-            timer: 30000,
+            timer: 1000*60*3,
             timerProgressBar: true,
             didOpen: () => {
                 Swal.showLoading()

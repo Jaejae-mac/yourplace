@@ -10,4 +10,6 @@ public interface LoginDAO {
 	UserVO getUser(UserVO vo);
 	//카카오 회원가입을 진행한 적이 있는지 여부 판단.
 	UserVO getKakao(UserVO vo);
+	
+	UserVO getIdEmail(UserVO vo);
 }

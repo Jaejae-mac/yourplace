@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,12 +10,19 @@
 <link rel="stylesheet" href="<c:url value="/resources/custom/css/banner.css" />" />
 <link rel="stylesheet" href="<c:url value="/resources/custom/css/mainHome.css" />" />
 <link rel="stylesheet" href="<c:url value="/resources/custom/css/bodyfont.css" />" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+<link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
 <title>YourPlace Home</title>
 </head>
 <body>
-<h1>YOUR PLACE!</h1>
 <%@ include file="header.jsp" %>
-
+<!-- 패스워드 재설정 이메일을 보내면 홈으로 이동된다. -->
+<!-- 홈으로 이동 후 메일이 전송되었다고 사용자에게 알리는 부분이 되겠다. -->
+<c:if test="${sendEmail == '1' }">
+	<script>
+	swal('', '이메일을 전송했습니다\n메일을 확인해주세요.', "success");
+	</script>
+</c:if>
 		<div class="category_all"
 			style="position: fixed; top: 100px; left: 0; width: 100%; height: 100%; display: none; z-index: 9999; background-color: rgba(0, 0, 0, 0.2);"
 			onclick="toggle_category_all()">
@@ -195,9 +202,10 @@
             <!--온 클릭 이벤트 OnClick Event-->
             <!--ex)onclick="hourplace_v2.userLog('W', '/', 'click', 'category', 'sub', 1);window.location.href='/category/1';"-->
           <p>가정집</p> 
-        <img src="icon/chevron_right_b.svg" class="h_pc_category_header_chevron" style="width: 20px; height: 20px;"></div> 
+          
+        <img src="<c:url value="/resources/custom/icon/chevron_right_b.svg" />" class="h_pc_category_header_chevron" style="width: 20px; height: 20px;"></div> 
           <div onclick=" " style="margin-top: 10px; height: 150px; border-radius: 4px; overflow: hidden; cursor: pointer;">
-            <img src="image/main_1_v3.jpg" style="width: 100%; height: 100%; object-fit: cover;">
+            <img src="<c:url value="/resources/custom/image/main_1_v3.jpg" />" style="width: 100%; height: 100%; object-fit: cover;">
 </div> 
               <div style="display: flex; flex-flow: row wrap;">
 
@@ -225,9 +233,9 @@
             <!--온 클릭 이벤트 OnClick Event-->
             <!--ex)onclick="hourplace_v2.userLog('W', '/', 'click', 'category', 'sub', 1);window.location.href='/category/2';"-->
           <p>스튜디오</p> 
-            <img src="icon/chevron_right_b.svg" class="h_pc_category_header_chevron" style="width: 20px; height: 20px;"></div> 
+            <img src="<c:url value="/resources/custom/icon/chevron_right_b.svg" />" class="h_pc_category_header_chevron" style="width: 20px; height: 20px;"></div> 
           <div onclick=" " style="margin-top: 10px; height: 150px; border-radius: 4px; overflow: hidden; cursor: pointer;">
-            <img src="image/main_2_v3.jpg" style="width: 100%; height: 100%; object-fit: cover;">
+            <img src="<c:url value="/resources/custom/image/main_2_v3.jpg" />" style="width: 100%; height: 100%; object-fit: cover;">
         </div> 
               <div style="display: flex; flex-flow: row wrap;">
   
@@ -269,9 +277,9 @@
             <!--온 클릭 이벤트 OnClick Event-->
             <!--ex)onclick="hourplace_v2.userLog('W', '/', 'click', 'category', 'main', 5);window.location.href='/category/3';"-->
     <p>상업 공간</p> 
-    <img src="icon/chevron_right_b.svg" class="h_pc_category_header_chevron" style="width: 20px; height: 20px;"></div> 
+    <img src="<c:url value="/resources/custom/icon/chevron_right_b.svg" />" class="h_pc_category_header_chevron" style="width: 20px; height: 20px;"></div> 
     <div onclick=" " style="margin-top: 10px; height: 150px; border-radius: 4px; overflow: hidden; cursor: pointer;">
-      <img src="image/main_3_v3.jpg" style="width: 100%; height: 100%; object-fit: cover;">
+      <img src="<c:url value="/resources/custom/image/main_3_v3.jpg" />" style="width: 100%; height: 100%; object-fit: cover;">
     </div> 
       <div style="display: flex; flex-flow: row wrap;">
         <div onclick=" " class="h_center h_hover_button left_side_button button_font_style">
@@ -298,9 +306,9 @@
             <!--온 클릭 이벤트 OnClick Event-->
             <!--ex)onclick="hourplace_v2.userLog('W', '/', 'click', 'category', 'main', 4);window.location.href='/category/4';"-->    
     <p>편의 시설</p> 
-    <img src="icon/chevron_right_b.svg" class="h_pc_category_header_chevron" style="width: 20px; height: 20px;"></div> 
+    <img src="<c:url value="/resources/custom/icon/chevron_right_b.svg" />" class="h_pc_category_header_chevron" style="width: 20px; height: 20px;"></div> 
     <div onclick=" " style="margin-top: 10px; height: 150px; border-radius: 4px; overflow: hidden; cursor: pointer;">
-      <img src="image/main_4_v3.jpg" style="width: 100%; height: 100%; object-fit: cover;">
+      <img src="<c:url value="/resources/custom/image/main_4_v3.jpg" />" style="width: 100%; height: 100%; object-fit: cover;">
     </div> 
     <div style="display: flex; flex-flow: row wrap;">
       <div onclick=" " class="h_center h_hover_button left_side_button button_font_style">
@@ -329,10 +337,10 @@
             <!--온 클릭 이벤트 OnClick Event-->
             <!--ex)onclick="hourplace_v2.userLog('W', '/', 'click', 'category', 'main', 3);window.location.href='/category/5';"-->
     <p>문화 공간</p> 
-    <img src="icon/chevron_right_b.svg" class="h_pc_category_header_chevron" style="width: 20px; height: 20px;">
+    <img src="<c:url value="/resources/custom/icon/chevron_right_b.svg" />" class="h_pc_category_header_chevron" style="width: 20px; height: 20px;">
     </div> 
     <div onclick=" " style="margin-top: 10px; height: 150px; border-radius: 4px; overflow: hidden; cursor: pointer;">
-      <img src="image/main_5_v3.jpg" style="width: 100%; height: 100%; object-fit: cover;">
+      <img src="<c:url value="/resources/custom/image/main_5_v3.jpg" />" style="width: 100%; height: 100%; object-fit: cover;">
     </div> 
   <div style="display: flex; flex-flow: row wrap;">
 
@@ -364,10 +372,10 @@
             <!--ex)onclick="hourplace_v2.userLog('W', '/', 'click', 'category', 'main', 6);window.location.href='/category/6';"-->
 
     <p>특수 공간</p>
-     <img src="icon/chevron_right_b.svg" class="h_pc_category_header_chevron" style="width: 20px; height: 20px;">
+     <img src="<c:url value="/resources/custom/icon/chevron_right_b.svg" />" class="h_pc_category_header_chevron" style="width: 20px; height: 20px;">
     </div> 
      <div onclick=" " style="margin-top: 10px; height: 150px; border-radius: 4px; overflow: hidden; cursor: pointer;">
-      <img src="image/main_6_v3.jpg" style="width: 100%; height: 100%; object-fit: cover;">
+      <img src="<c:url value="/resources/custom/image/main_6_v3.jpg" />" style="width: 100%; height: 100%; object-fit: cover;">
     </div> 
     <div style="display: flex; flex-flow: row wrap;">
       
@@ -401,10 +409,10 @@
             <!--ex)onclick="hourplace_v2.userLog('W', '/', 'click', 'category', 'main', 6);window.location.href='/category/7';"-->
 
     <p>대형 공간</p> 
-    <img src="icon/chevron_right_b.svg" class="h_pc_category_header_chevron" style="width: 20px; height: 20px;">
+    <img src="<c:url value="/resources/custom/icon/chevron_right_b.svg" />" class="h_pc_category_header_chevron" style="width: 20px; height: 20px;">
   </div> 
   <div onclick="" style="margin-top: 10px; height: 150px; border-radius: 4px; overflow: hidden; cursor: pointer;">
-    <img src="image/main_7_v3.jpg" style="width: 100%; height: 100%; object-fit: cover;">
+    <img src="<c:url value="/resources/custom/image/main_7_v3.jpg" />" style="width: 100%; height: 100%; object-fit: cover;">
   </div> 
   <div style="display: flex; flex-flow: row wrap;">
     <div onclick=" " class="h_center h_hover_button left_side_button button_font_style">
@@ -435,10 +443,10 @@
             <!--ex)onclick="hourplace_v2.userLog('W', '/', 'click', 'category', 'main', 7);window.location.href='/category/8';"-->
 
     <p>야외</p> 
-    <img src="icon/chevron_right_b.svg" class="h_pc_category_header_chevron" style="width: 20px; height: 20px;">
+    <img src="<c:url value="/resources/custom/icon/chevron_right_b.svg" />" class="h_pc_category_header_chevron" style="width: 20px; height: 20px;">
   </div> 
   <div onclick=" " style="margin-top: 10px; height: 150px; border-radius: 4px; overflow: hidden; cursor: pointer;">
-    <img src="image/main_8_v3.jpg" style="width: 100%; height: 100%; object-fit: cover;">
+    <img src="<c:url value="/resources/custom/image/main_8_v3.jpg" />" style="width: 100%; height: 100%; object-fit: cover;">
   </div> 
   <div style="display: flex; flex-flow: row wrap;">
     <div onclick=" " class="h_center h_hover_button left_side_button button_font_style">
@@ -475,7 +483,7 @@
           <p>
   아워플레이스 모든 장소 보기
 </p> 
-<img src="icon/before_blue.svg" style="margin: 0px 8px; width: 20px; height: 20px;">
+<img src="<c:url value="/resources/custom/icon/before_blue.svg" />" style="margin: 0px 8px; width: 20px; height: 20px;">
         </div>
       </div>
     </div>
@@ -511,7 +519,8 @@
   <div class="card_layout" style="padding: 0px 7.5px 0px 0px;">
       <div class="card" >
           <div class="card_header" >
-              <img src="image/신규1.jfif"  alt="이미지 넣는 곳" /><!-- 데이터 베이스의 해당 image 가져오기-->
+          
+              <img src="<c:url value="/resources/custom/image/신규1.jfif" />"  alt="이미지 넣는 곳" /><!-- 데이터 베이스의 해당 image 가져오기-->
           </div>
           <div class="card_body">
               <div class="card_body_header">
@@ -521,14 +530,14 @@
                   </p>
                   <div class="card_body_header_right">
                       <div>
-                          <img src="icon/person.png">
+                          <img src="<c:url value="/resources/custom/icon/person.png" />">
                           <p>
                               4
                               <!-- {{ place.people }} -->
                           </p>
                       </div>
                       <div>
-                          <img src="icon/parking.png">
+                          <img src="<c:url value="/resources/custom/icon/parking.png" />">
                           <p>
                               1
                               <!-- {{ place.parking }} -->
@@ -545,7 +554,7 @@
 
           </div>
           <div class="card_body_footer">
-              <img src="icon/gold_star.png">
+              <img src="<c:url value="/resources/custom/icon/gold_star.png" />">
               <p class="card_body_footer_star">
                   5.0
                   <!-- {{ place.feedback_rating }} -->
@@ -558,7 +567,7 @@
                   61,000원
                   <!-- {{ place.price_guest }}원 -->
               </p>
-              <img class="card_body_footer_booking" src="icon/bookmark_g.png"><!-- 관심 장소로 선택시 이미지 변경 구현필요-->
+              <img class="card_body_footer_booking" src="<c:url value="/resources/custom/icon/bookmark_g.png" />"><!-- 관심 장소로 선택시 이미지 변경 구현필요-->
           </div>
       </div>
   </div>
@@ -567,7 +576,7 @@
   <div class="card_layout" style="padding: 0px 7.5px 0px 0px;">
     <div class="card" >
         <div class="card_header" >
-            <img src="image/신규2.jfif"  alt="이미지 넣는 곳" /><!-- 데이터 베이스의 해당 image 가져오기-->
+            <img src="<c:url value="/resources/custom/image/신규2.jfif" />"  alt="이미지 넣는 곳" /><!-- 데이터 베이스의 해당 image 가져오기-->
         </div>
         <div class="card_body">
             <div class="card_body_header">
@@ -577,14 +586,14 @@
                 </p>
                 <div class="card_body_header_right">
                     <div>
-                        <img src="icon/person.png">
+                        <img src="<c:url value="/resources/custom/icon/person.png" />">
                         <p>
                             5
                             <!-- {{ place.people }} -->
                         </p>
                     </div>
                     <div>
-                        <img src="icon/parking.png">
+                        <img src="<c:url value="/resources/custom/icon/parking.png" />">
                         <p>
                             5
                             <!-- {{ place.parking }} -->
@@ -601,7 +610,7 @@
 
         </div>
         <div class="card_body_footer">
-            <img src="icon/gold_star.png">
+            <img src="<c:url value="/resources/custom/icon/gold_star.png" />">
             <p class="card_body_footer_star">
                 5.0
                 <!-- {{ place.feedback_rating }} -->
@@ -614,7 +623,7 @@
                 64.000원
                 <!-- {{ place.price_guest }}원 -->
             </p>
-            <img class="card_body_footer_booking" src="icon/bookmark_g.png"><!-- 관심 장소로 선택시 이미지 변경 구현필요-->
+            <img class="card_body_footer_booking" src="<c:url value="/resources/custom/icon/bookmark_g.png" />"><!-- 관심 장소로 선택시 이미지 변경 구현필요-->
         </div>
     </div>
 </div>
@@ -623,7 +632,7 @@
 <div class="card_layout" style="padding: 0px 7.5px 0px 0px;">
   <div class="card" >
       <div class="card_header" >
-          <img src="image/신규3.jfif"  alt="이미지 넣는 곳" /><!-- 데이터 베이스의 해당 image 가져오기-->
+          <img src="<c:url value="/resources/custom/image/신규3.jfif" />"  alt="이미지 넣는 곳" /><!-- 데이터 베이스의 해당 image 가져오기-->
       </div>
       <div class="card_body">
           <div class="card_body_header">
@@ -633,14 +642,14 @@
               </p>
               <div class="card_body_header_right">
                   <div>
-                      <img src="icon/person.png">
+                      <img src="<c:url value="/resources/custom/icon/person.png" />">
                       <p>
                           4
                           <!-- {{ place.people }} -->
                       </p>
                   </div>
                   <div>
-                      <img src="icon/parking.png">
+                      <img src="<c:url value="/resources/custom/icon/parking.png" />">
                       <p>
                           2
                           <!-- {{ place.parking }} -->
@@ -657,7 +666,7 @@
 
       </div>
       <div class="card_body_footer">
-          <img src="icon/gold_star.png">
+          <img src="<c:url value="/resources/custom/icon/gold_star.png" />">
           <p class="card_body_footer_star">
               5.0
               <!-- {{ place.feedback_rating }} -->
@@ -670,7 +679,7 @@
               64,000원
               <!-- {{ place.price_guest }}원 -->
           </p>
-          <img class="card_body_footer_booking" src="icon/bookmark_g.png"><!-- 관심 장소로 선택시 이미지 변경 구현필요-->
+          <img class="card_body_footer_booking" src="<c:url value="/resources/custom/icon/bookmark_g.png" />"><!-- 관심 장소로 선택시 이미지 변경 구현필요-->
       </div>
   </div>
 </div>
@@ -680,7 +689,7 @@
 <div class="card_layout" style="padding: 0px 7.5px 0px 0px;">
   <div class="card" >
       <div class="card_header" >
-          <img src="image/신규4.jpg"  alt="이미지 넣는 곳" /><!-- 데이터 베이스의 해당 image 가져오기-->
+          <img src="<c:url value="/resources/custom/image/신규4.jpg" />"  alt="이미지 넣는 곳" /><!-- 데이터 베이스의 해당 image 가져오기-->
       </div>
       <div class="card_body">
           <div class="card_body_header">
@@ -690,14 +699,14 @@
               </p>
               <div class="card_body_header_right">
                   <div>
-                      <img src="icon/person.png">
+                      <img src="<c:url value="/resources/custom/icon/person.png" />">
                       <p>
                           5
                           <!-- {{ place.people }} -->
                       </p>
                   </div>
                   <div>
-                      <img src="icon/parking.png">
+                      <img src="<c:url value="/resources/custom/icon/parking.png" />">
                       <p>
                           1
                           <!-- {{ place.parking }} -->
@@ -714,7 +723,7 @@
 
       </div>
       <div class="card_body_footer">
-          <img src="icon/gold_star.png">
+          <img src="<c:url value="/resources/custom/icon/gold_star.png" />">
           <p class="card_body_footer_star">
               4.7
               <!-- {{ place.feedback_rating }} -->
@@ -727,7 +736,7 @@
               32,000원
               <!-- {{ place.price_guest }}원 -->
           </p>
-          <img class="card_body_footer_booking" src="icon/bookmark_g.png"><!-- 관심 장소로 선택시 이미지 변경 구현필요-->
+          <img class="card_body_footer_booking" src="<c:url value="/resources/custom/icon/bookmark_g.png" />"><!-- 관심 장소로 선택시 이미지 변경 구현필요-->
       </div>
   </div>
 </div>
@@ -770,7 +779,7 @@
   <div class="card_layout" style="padding: 0px 7.5px 0px 0px;">
       <div class="card" >
           <div class="card_header" >
-              <img src="image/recommand/recommand-1.jfif"  alt="이미지 넣는 곳" /><!-- 데이터 베이스의 해당 image 가져오기-->
+              <img src="<c:url value="/resources/custom/image/recommand/recommand-1.jfif" />"  alt="이미지 넣는 곳" /><!-- 데이터 베이스의 해당 image 가져오기-->
           </div>
           <div class="card_body">
               <div class="card_body_header">
@@ -780,14 +789,14 @@
                   </p>
                   <div class="card_body_header_right">
                       <div>
-                          <img src="icon/person.png">
+                          <img src="<c:url value="/resources/custom/icon/person.png" />">
                           <p>
                               4
                               <!-- {{ place.people }} -->
                           </p>
                       </div>
                       <div>
-                          <img src="icon/parking.png">
+                          <img src="<c:url value="/resources/custom/icon/parking.png" />">
                           <p>
                               2
                               <!-- {{ place.parking }} -->
@@ -804,7 +813,7 @@
 
           </div>
           <div class="card_body_footer">
-              <img src="icon/gold_star.png">
+              <img src="<c:url value="/resources/custom/icon/gold_star.png" />">
               <p class="card_body_footer_star">
                   5.0
                   <!-- {{ place.feedback_rating }} -->
@@ -817,7 +826,7 @@
                   64,000원
                   <!-- {{ place.price_guest }}원 -->
               </p>
-              <img class="card_body_footer_booking" src="icon/bookmark_g.png"><!-- 관심 장소로 선택시 이미지 변경 구현필요-->
+              <img class="card_body_footer_booking" src="<c:url value="/resources/custom/icon/bookmark_g.png" />"><!-- 관심 장소로 선택시 이미지 변경 구현필요-->
           </div>
       </div>
   </div>
@@ -826,7 +835,7 @@
   <div class="card_layout" style="padding: 0px 7.5px 0px 0px;">
     <div class="card" >
         <div class="card_header">
-            <img src="image/recommand/recommand-2.jpg"  alt="이미지 넣는 곳" /><!-- 데이터 베이스의 해당 image 가져오기-->
+            <img src="<c:url value="/resources/custom/image/recommand/recommand-2.jpg" />"  alt="이미지 넣는 곳" /><!-- 데이터 베이스의 해당 image 가져오기-->
         </div>
         <div class="card_body">
             <div class="card_body_header">
@@ -836,14 +845,14 @@
                 </p>
                 <div class="card_body_header_right">
                     <div>
-                        <img src="icon/person.png">
+                        <img src="<c:url value="/resources/custom/icon/person.png" />">
                         <p>
                             7
                             <!-- {{ place.people }} -->
                         </p>
                     </div>
                     <div>
-                        <img src="icon/parking.png">
+                        <img src="<c:url value="/resources/custom/icon/parking.png" />">
                         <p>
                             3
                             <!-- {{ place.parking }} -->
@@ -860,7 +869,7 @@
 
         </div>
         <div class="card_body_footer">
-            <img src="icon/gold_star.png">
+            <img src="<c:url value="/resources/custom/icon/gold_star.png" />">
             <p class="card_body_footer_star">
                 5.0
                 <!-- {{ place.feedback_rating }} -->
@@ -873,7 +882,7 @@
                 111,000원
                 <!-- {{ place.price_guest }}원 -->
             </p>
-            <img class="card_body_footer_booking" src="icon/bookmark_g.png"><!-- 관심 장소로 선택시 이미지 변경 구현필요-->
+            <img class="card_body_footer_booking" src="<c:url value="/resources/custom/icon/bookmark_g.png" />"><!-- 관심 장소로 선택시 이미지 변경 구현필요-->
         </div>
     </div>
 </div>
@@ -882,7 +891,7 @@
 <div class="card_layout" style="padding: 0px 7.5px 0px 0px;">
   <div class="card" >
       <div class="card_header" >
-          <img src="image/recommand/recommand-3.jfif"  alt="이미지 넣는 곳" /><!-- 데이터 베이스의 해당 image 가져오기-->
+          <img src="<c:url value="/resources/custom/image/recommand/recommand-3.jfif" />"  alt="이미지 넣는 곳" /><!-- 데이터 베이스의 해당 image 가져오기-->
       </div>
       <div class="card_body">
           <div class="card_body_header">
@@ -892,14 +901,14 @@
               </p>
               <div class="card_body_header_right">
                   <div>
-                      <img src="icon/person.png">
+                      <img src="<c:url value="/resources/custom/icon/person.png" />">
                       <p>
                           3
                           <!-- {{ place.people }} -->
                       </p>
                   </div>
                   <div>
-                      <img src="icon/parking.png">
+                      <img src="<c:url value="/resources/custom/icon/parking.png" />">
                       <p>
                           1
                           <!-- {{ place.parking }} -->
@@ -916,7 +925,7 @@
 
       </div>
       <div class="card_body_footer">
-          <img src="icon/gold_star.png">
+          <img src="<c:url value="/resources/custom/icon/gold_star.png" />">
           <p class="card_body_footer_star">
               4.9
               <!-- {{ place.feedback_rating }} -->
@@ -929,7 +938,7 @@
               50,000원
               <!-- {{ place.price_guest }}원 -->
           </p>
-          <img class="card_body_footer_booking" src="icon/bookmark_g.png"><!-- 관심 장소로 선택시 이미지 변경 구현필요-->
+          <img class="card_body_footer_booking" src="<c:url value="/resources/custom/icon/bookmark_g.png" />"><!-- 관심 장소로 선택시 이미지 변경 구현필요-->
       </div>
   </div>
 </div>
@@ -939,7 +948,7 @@
 <div class="card_layout" style="padding: 0px 7.5px 0px 0px;">
   <div class="card" >
       <div class="card_header" >
-          <img src="image/recommand/recommand-4.jfif"  alt="이미지 넣는 곳" /><!-- 데이터 베이스의 해당 image 가져오기-->
+          <img src="<c:url value="/resources/custom/image/recommand/recommand-4.jfif" />"  alt="이미지 넣는 곳" /><!-- 데이터 베이스의 해당 image 가져오기-->
       </div>
       <div class="card_body">
           <div class="card_body_header">
@@ -949,14 +958,14 @@
               </p>
               <div class="card_body_header_right">
                   <div>
-                      <img src="icon/person.png">
+                      <img src="<c:url value="/resources/custom/icon/person.png" />">
                       <p>
                           2
                           <!-- {{ place.people }} -->
                       </p>
                   </div>
                   <div>
-                      <img src="icon/parking.png">
+                      <img src="<c:url value="/resources/custom/icon/parking.png" />">
                       <p>
                           1
                           <!-- {{ place.parking }} -->
@@ -973,7 +982,7 @@
 
       </div>
       <div class="card_body_footer">
-          <img src="icon/gold_star.png">
+          <img src="<c:url value="/resources/custom/icon/gold_star.png" />">
           <p class="card_body_footer_star">
               5.0
               <!-- {{ place.feedback_rating }} -->
@@ -986,7 +995,7 @@
               38,000원
               <!-- {{ place.price_guest }}원 -->
           </p>
-          <img class="card_body_footer_booking" src="icon/bookmark_g.png"><!-- 관심 장소로 선택시 이미지 변경 구현필요-->
+          <img class="card_body_footer_booking" src="<c:url value="/resources/custom/icon/bookmark_g.png" />"><!-- 관심 장소로 선택시 이미지 변경 구현필요-->
       </div>
   </div>
 </div>
@@ -995,7 +1004,7 @@
 <div class="card_layout" style="padding: 0px 7.5px 0px 0px;">
   <div class="card" >
       <div class="card_header" >
-          <img src="image/recommand/recommand-5.jfif"  alt="이미지 넣는 곳" /><!-- 데이터 베이스의 해당 image 가져오기-->
+          <img src="<c:url value="/resources/custom/image/recommand/recommand-5.jfif" />"  alt="이미지 넣는 곳" /><!-- 데이터 베이스의 해당 image 가져오기-->
       </div>
       <div class="card_body">
           <div class="card_body_header">
@@ -1005,14 +1014,14 @@
               </p>
               <div class="card_body_header_right">
                   <div>
-                      <img src="icon/person.png">
+                      <img src="<c:url value="/resources/custom/icon/person.png" />">
                       <p>
                           3
                           <!-- {{ place.people }} -->
                       </p>
                   </div>
                   <div>
-                      <img src="icon/parking.png">
+                      <img src="<c:url value="/resources/custom/icon/parking.png" />">
                       <p>
                           0
                           <!-- {{ place.parking }} -->
@@ -1029,7 +1038,7 @@
 
       </div>
       <div class="card_body_footer">
-          <img src="icon/gold_star.png">
+          <img src="<c:url value="/resources/custom/icon/gold_star.png" />">
           <p class="card_body_footer_star">
               5.0
               <!-- {{ place.feedback_rating }} -->
@@ -1042,7 +1051,7 @@
               11,000원
               <!-- {{ place.price_guest }}원 -->
           </p>
-          <img class="card_body_footer_booking" src="icon/bookmark_g.png"><!-- 관심 장소로 선택시 이미지 변경 구현필요-->
+          <img class="card_body_footer_booking" src="<c:url value="/resources/custom/icon/bookmark_g.png" />"><!-- 관심 장소로 선택시 이미지 변경 구현필요-->
       </div>
   </div>
 </div>
@@ -1051,7 +1060,7 @@
 <div class="card_layout" style="padding: 0px 7.5px 0px 0px;">
   <div class="card" >
       <div class="card_header" >
-          <img src="image/recommand/recommand-6.jfif"  alt="이미지 넣는 곳" /><!-- 데이터 베이스의 해당 image 가져오기-->
+          <img src="<c:url value="/resources/custom/image/recommand/recommand-6.jfif" />"  alt="이미지 넣는 곳" /><!-- 데이터 베이스의 해당 image 가져오기-->
       </div>
       <div class="card_body">
           <div class="card_body_header">
@@ -1061,14 +1070,14 @@
               </p>
               <div class="card_body_header_right">
                   <div>
-                      <img src="icon/person.png">
+                      <img src="<c:url value="/resources/custom/icon/person.png" />">
                       <p>
                           2
                           <!-- {{ place.people }} -->
                       </p>
                   </div>
                   <div>
-                      <img src="icon/parking.png">
+                      <img src="<c:url value="/resources/custom/icon/parking.png" />">
                       <p>
                           0
                           <!-- {{ place.parking }} -->
@@ -1085,7 +1094,7 @@
 
       </div>
       <div class="card_body_footer">
-          <img src="icon/gold_star.png">
+          <img src="<c:url value="/resources/custom/icon/gold_star.png" />">
           <p class="card_body_footer_star">
               5.0
               <!-- {{ place.feedback_rating }} -->
@@ -1098,7 +1107,7 @@
               68,000원
               <!-- {{ place.price_guest }}원 -->
           </p>
-          <img class="card_body_footer_booking" src="icon/bookmark_g.png"><!-- 관심 장소로 선택시 이미지 변경 구현필요-->
+          <img class="card_body_footer_booking" src="<c:url value="/resources/custom/icon/bookmark_g.png" />"><!-- 관심 장소로 선택시 이미지 변경 구현필요-->
       </div>
   </div>
 </div>
@@ -1107,7 +1116,7 @@
 <div class="card_layout" style="padding: 0px 7.5px 0px 0px;">
   <div class="card" >
       <div class="card_header" >
-          <img src="image/recommand/recommand-7.jfif"  alt="이미지 넣는 곳" /><!-- 데이터 베이스의 해당 image 가져오기-->
+          <img src="<c:url value="/resources/custom/image/recommand/recommand-7.jfif" />"  alt="이미지 넣는 곳" /><!-- 데이터 베이스의 해당 image 가져오기-->
       </div>
       <div class="card_body">
           <div class="card_body_header">
@@ -1117,14 +1126,14 @@
               </p>
               <div class="card_body_header_right">
                   <div>
-                      <img src="icon/person.png">
+                      <img src="<c:url value="/resources/custom/icon/person.png" />">
                       <p>
                           4
                           <!-- {{ place.people }} -->
                       </p>
                   </div>
                   <div>
-                      <img src="icon/parking.png">
+                      <img src="<c:url value="/resources/custom/icon/parking.png" />">
                       <p>
                           3
                           <!-- {{ place.parking }} -->
@@ -1141,7 +1150,7 @@
 
       </div>
       <div class="card_body_footer">
-          <img src="icon/gold_star.png">
+          <img src="<c:url value="/resources/custom/icon/gold_star.png" />">
           <p class="card_body_footer_star">
               5.0
               <!-- {{ place.feedback_rating }} -->
@@ -1154,7 +1163,7 @@
               65,000원
               <!-- {{ place.price_guest }}원 -->
           </p>
-          <img class="card_body_footer_booking" src="icon/bookmark_g.png"><!-- 관심 장소로 선택시 이미지 변경 구현필요-->
+          <img class="card_body_footer_booking" src="<c:url value="/resources/custom/icon/bookmark_g.png" />"><!-- 관심 장소로 선택시 이미지 변경 구현필요-->
       </div>
   </div>
 </div>
@@ -1173,14 +1182,14 @@
               </p>
               <div class="card_body_header_right">
                   <div>
-                      <img src="icon/person.png">
+                      <img src="<c:url value="/resources/custom/icon/person.png" />">
                       <p>
                           5
                           <!-- {{ place.people }} -->
                       </p>
                   </div>
                   <div>
-                      <img src="icon/parking.png">
+                      <img src="<c:url value="/resources/custom/icon/parking.png" />">
                       <p>
                           1
                           <!-- {{ place.parking }} -->
@@ -1197,7 +1206,7 @@
 
       </div>
       <div class="card_body_footer">
-          <img src="icon/gold_star.png">
+          <img src="<c:url value="/resources/custom/icon/gold_star.png" />">
           <p class="card_body_footer_star">
               4.7
               <!-- {{ place.feedback_rating }} -->
@@ -1210,7 +1219,7 @@
               34,900원
               <!-- {{ place.price_guest }}원 -->
           </p>
-          <img class="card_body_footer_booking" src="icon/bookmark_g.png"><!-- 관심 장소로 선택시 이미지 변경 구현필요-->
+          <img class="card_body_footer_booking" src="<c:url value="/resources/custom/icon/bookmark_g.png" />"><!-- 관심 장소로 선택시 이미지 변경 구현필요-->
       </div>
   </div>
 </div>
