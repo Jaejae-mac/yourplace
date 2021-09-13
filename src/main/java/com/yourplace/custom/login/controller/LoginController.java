@@ -34,6 +34,9 @@ public class LoginController {
 			HttpSession session = request.getSession();
 			// 세션의 키로 userId 를 주고 세션의 값으로 유저의 아이디를 준다.
 			session.setAttribute("userId", vo.getUserId());
+			System.out.println(vo.getUserType());
+			session.setAttribute("userType", String.valueOf(vo.getUserType()));
+			session.setAttribute("userNum", vo.getUserNum());
 			// 로그인 성공시에는 호스트의 홈페이지로 이동시켜준다.
 			return "redirect:home.do";
 		}
@@ -60,12 +63,24 @@ public class LoginController {
 				// 로그인 성공시에는세션을 생성해준다.
 			HttpSession session = request.getSession();
 			// 세션의 키로 userId 를 주고 세션의 값으로 유저의 아이디를 준다.
-			session.setAttribute("userId", vo.getUserId());
+			session.setAttribute("userId", kakao.getUserId());
+			session.setAttribute("userType", kakao.getUserType());
+			session.setAttribute("userNum", kakao.getUserNum());
 			// 로그인 성공시에는 호스트의 홈페이지로 이동시켜준다.
 			return "index";
 
 		}
 
 	}
+	
+	@GetMapping("/logout.do")
+	public String logout(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		System.out.println(session.getAttribute("userId") +"님이 로그아웃 되었습니다.");
+		session.invalidate();
+		return "redirect:home.do";
+	}
+		
+	
 
 }

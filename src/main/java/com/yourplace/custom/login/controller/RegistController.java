@@ -3,6 +3,7 @@ package com.yourplace.custom.login.controller;
 import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -67,13 +68,22 @@ public class RegistController {
 	
 	//회원가입 처리 메서드.(INSERT)
 	@PostMapping("/regist.do")
-	public String regist(UserVO vo) {
+	public String regist(UserVO vo, HttpServletRequest request) {
 		//패스워드 암호화 과정.
 		String password = vo.getUserPw();
 		String encodePw = passEncoder.encode(password);
 		vo.setUserPw(encodePw);
 		System.out.println(vo.getKakaoId());
-		registService.insertUser(vo);
+		//제대로된 아이디와 비밀번호 가 전송되었을 경우.
+		if(vo.getUserId().length() > 0 && vo.getUserPw().length() > 0) {
+			//회원가입 완료후 아이디 세션 생성.
+			HttpSession session = request.getSession();
+			session.setAttribute("userId", vo.getUserId());
+			session.setAttribute("userType", 0);
+			registService.insertUser(vo);
+		}
+		
+		//회원가입후 홈으로 보내주고, 쿠폰을 발급해 주어야 한다.
 		return "redirect:home.do";
 	}
 }

@@ -59,6 +59,9 @@
 .kakao_btn {
 	position: absolute;
 }
+input:focus{
+	outline:none;
+}
 </style>
 <script>
 	//초기화 시키기. 
@@ -71,10 +74,11 @@
 <body>
 
 	<!-- Header -->
+	<%@ include file="../header.jsp" %>
 	<!-- Header End -->
 	<!-- Main Body -->
 	<div
-		style="flex-direction: row; display: flex; justify-content: center; background-color: azure; margin-top: 100px">
+		style="flex-direction: row; display: flex; justify-content: center; margin-top: 100px">
 		<!-- header 가 100px 이라 margin-top = header height-->
 		<div class="h_center" id="test_body"
 			style="width: 1160px; height: 100%; padding-top: 100px;">
@@ -142,7 +146,7 @@
 							</div>
 
 							<div
-								style="margin-top: 20px; height: 52px; border-radius: 8px; background-color: var(- -blue-020); display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; background: yellow">
+								style="margin-top: 20px; height: 52px; border-radius: 8px; background-color: var(- -blue-020); display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer;">
 								<label for="login_kakao" class="login_kakao"><img
 									src="<c:url value="/resources/img/kakao/kakao_login_btn.png" />"
 									alt="" style="height: 50px;"></label> <input type="button"
@@ -212,6 +216,7 @@
 	<!-- main 끝 -->
 
 	<!-- Footer -->
+	<%@ include file="../footer.jsp" %>
 	<!-- Footer 끝 -->
 
 	<!-- script -->
@@ -242,7 +247,7 @@
 							console.log(id);
 							console.log(email);
 							console.log(name);
-							
+							console.log(res.ACCESS_TOKEN);
 							$('#kakaoid').val(id);
 							$('#kakaoemail').val(email);
 							$('#kakaoname').val(name);

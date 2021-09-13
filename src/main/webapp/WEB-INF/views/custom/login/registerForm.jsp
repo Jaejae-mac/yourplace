@@ -243,6 +243,7 @@
    </script>
 </head>
 <body>
+<%@ include file="../header.jsp" %>
 	<form action="" id="regist_form" method="post">
 	<div class="h_column_center" style="margin-top: 20px;">
 		<p
@@ -547,7 +548,7 @@
 	</div>
 	<input type="hidden" name="kakaoId" id="kakao_id" value="${kakaoId }">
 	</form>
-
+	<%@ include file="../footer.jsp" %>
 	<script>
         function toggle_auth_info() {
             if ($('.auth_info').css('display') === 'none') {

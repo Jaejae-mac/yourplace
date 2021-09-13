@@ -39,5 +39,11 @@
 		location="/resources/css" />
 	<mvc:resources mapping="/img/**"
 		location="/resources/img" />
+	<mvc:resources mapping="/custom/css/**"
+		location="/resources/custom/css" />
+	<mvc:resources mapping="/custom/imgage/**"
+		location="/resources/custom/imgage" />
+	<mvc:resources mapping="/custom/icon/**"
+		location="/resources/custom/icon" />
 	<mvc:resources mapping="/js/**" location="/resources/js" />
 </beans>
