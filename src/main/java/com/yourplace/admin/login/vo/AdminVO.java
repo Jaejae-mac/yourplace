@@ -1,6 +1,8 @@
 package com.yourplace.admin.login.vo;
 
-import java.util.Date;
+import java.sql.Date;
+
+import javax.annotation.Generated;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -10,6 +12,7 @@ import lombok.ToString;
 @Setter
 @ToString
 public class AdminVO {
+	
 	private int adminNum;
 	private String adminId;
 	private String adminPw;

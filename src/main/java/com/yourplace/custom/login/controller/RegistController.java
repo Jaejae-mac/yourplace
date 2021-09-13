@@ -2,6 +2,8 @@ package com.yourplace.custom.login.controller;
 
 import java.util.Random;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -14,6 +16,7 @@ import com.yourplace.custom.login.service.IdCheckService;
 import com.yourplace.custom.login.service.RegistService;
 import com.yourplace.custom.login.vo.UserVO;
 
+//회원가입관련 요청과 응답을 처리할 컨트롤러.
 @Controller
 public class RegistController {
 	
@@ -27,8 +30,6 @@ public class RegistController {
 	private BCryptPasswordEncoder passEncoder;
 	//passEncoder.encode(암호화할 비밀번호.)
 	//if(passEncoder.matches(입력받은 비밀번호 ,암호화된 비밀번호) 로 비밀번호 비교 가능.
-	
-	
 	
 	//회원 가입 모듈로 보내주는 메서드.
 	@GetMapping("/register.do")
@@ -67,13 +68,11 @@ public class RegistController {
 	//회원가입 처리 메서드.(INSERT)
 	@PostMapping("/regist.do")
 	public String regist(UserVO vo) {
-		System.out.println("[RegistController] "+vo.toString());
-		
 		//패스워드 암호화 과정.
 		String password = vo.getUserPw();
 		String encodePw = passEncoder.encode(password);
 		vo.setUserPw(encodePw);
-		
+		System.out.println(vo.getKakaoId());
 		registService.insertUser(vo);
 		return "redirect:home.do";
 	}

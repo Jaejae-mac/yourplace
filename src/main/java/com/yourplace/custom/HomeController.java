@@ -11,4 +11,8 @@ public class HomeController {
 	public String home() {
 		return "index";
 	}
+	@GetMapping("/detail.do")
+	public String detail() {
+		return "index2";
+	}
 }

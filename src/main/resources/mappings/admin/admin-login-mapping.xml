@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="AdminDAO">
+	<resultMap type="myAdmin" id="adminResult">
+		<id property="adminNum" column="admin_num" />
+		<result property="adminId" column="admin_id" />
+		<result property="adminPw" column="admin_pw" />
+		<result property="adminEmail" column="admin_email" />
+		<result property="adminName" column="admin_name" />
+		<result property="adminTel" column="admin_tel" />
+		<result property="adminRegDate" column="admin_reg_date" />
+	</resultMap>
+
+	
+	<select id="getAdmin" resultMap="adminResult">
+		SELECT * FROM member_admin where admin_id = #{adminId}
+	</select>
+	
+<!--<select id="idCheck" resultMap="adminResult">
+	SELECT COUNT(*) FROM member_admin where admin_id = #{adminId}
+	</select> -->
+
+	<insert id="insertAdmin" parameterType="myAdmin">
+		INSERT INTO member_admin
+		(admin_id, admin_pw, admin_email, admin_name, admin_tel, admin_reg_date)
+		values
+		(#{adminId}, #{adminPw}, #{adminEmail}, #{adminName}, #{adminTel}, #{adminRegDate})
+	</insert>
+
+</mapper>

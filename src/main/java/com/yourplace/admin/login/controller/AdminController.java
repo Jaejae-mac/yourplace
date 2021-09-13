@@ -13,13 +13,14 @@ public class AdminController {
 	@Autowired
 	private AdminService adminService;
 	
-	@RequestMapping("/test.mdo")
+	@RequestMapping("/login.mdo")
 	public void test() {
 		AdminVO vo = new AdminVO();
-		vo.setAdminNum(0);
+		
 		vo.setAdminId("jey");
 		vo.setAdminPw("jey");
 		AdminVO admin = adminService.getAdmin(vo);
 		System.out.println(admin.toString());
+		
 	}
 }

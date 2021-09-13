@@ -19,30 +19,44 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="userRegDate" column="user_reg_date" />
 		<result property="userSmsAgree" column="user_sms_agree" />
 		<result property="userEmailAgree" column="user_email_agree" />
+		<result property="kakaoId" column="kakao_id" />
 	</resultMap>
 
 
 	<select id="getUserId" resultMap="userResult">
-		SELECT user_id FROM member WHERE user_id = #{userId}
+		SELECT user_id FROM member
+		WHERE user_id = #{userId}
+	</select>
+	
+	<select id="getKakao" resultMap="userResult">
+		SELECT * FROM member
+		WHERE kakao_id = #{kakaoId}
+	</select>
+
+	<select id="getUser" resultMap="userResult">
+		SELECT * FROM member WHERE
+		user_id = #{userId}
 	</select>
 	<insert id="insertUser" parameterType="myUser">
 		INSERT INTO member(
-				user_id,
-				user_pw,
-				user_name,
-				user_nick_name,
-				user_tel,
-				user_email,
-				user_sex
+		user_id,
+		user_pw,
+		user_name,
+		user_nick_name,
+		user_tel,
+		user_email,
+		user_sex,
+		kakao_id
 		)
 		VALUES(
-			#{userId},
-			#{userPw},
-			#{userName},
-			#{userNickName},
-			#{userTel},
-			#{userEmail},
-			#{userSex}
+		#{userId},
+		#{userPw},
+		#{userName},
+		#{userNickName},
+		#{userTel},
+		#{userEmail},
+		#{userSex},
+		#{kakaoId}
 		)
 	</insert>
 </mapper>

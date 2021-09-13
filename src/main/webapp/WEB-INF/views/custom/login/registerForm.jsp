@@ -433,8 +433,20 @@
 			</div>
 
 			<div class="input_container" style="margin-top: 8px;">
-				<input type="text" placeholder="닉네임을 입력하세요" value="" id="nickname"
-					name="userNickName" required>
+			<c:choose>
+				<c:when test="${kakaoName != null} ">
+				<input type="text" placeholder="닉네임을 입력하세요" id="nickname"
+					name="userNickName" value="nothing" required>
+				</c:when>
+				<c:otherwise>
+				
+				<input type="text" placeholder="닉네임을 입력하세요" id="nickname"
+					name="userNickName" value="<c:out value="${kakaoName}"/>" required>
+					<script>
+						$("#kakao_id").val("${kakaoId}");
+					</script>
+				</c:otherwise>
+			</c:choose>
 				<div class="delete" show="name.length > 0"
 					onclick="delete_nickname()">
 					<img
@@ -454,8 +466,18 @@
 			</div>
 
 			<div class="input_container" style="margin-top: 8px;">
-				<input type="email" placeholder="이메일을 입력하세요" value="" id="email"
+			<c:choose>
+				<c:when test="${kakaoEmail != null} ">
+				<input type="email" placeholder="이메일을 입력하세요" id="email"
 					name="userEmail" required>
+				</c:when>
+				<c:otherwise>
+				
+				<input type="email" placeholder="이메일을 입력하세요" id="email" value="${kakaoEmail }"
+					name="userEmail" required>
+				</c:otherwise>
+			</c:choose>
+				
 				<div class="delete" show="email.length > 0" onclick="delete_email()">
 					<img
 						src="<c:url value="/resources/img/icon/register/round_delete_g.png" />"
@@ -523,6 +545,7 @@
 			</div>
 		</div>
 	</div>
+	<input type="hidden" name="kakaoId" id="kakao_id" value="${kakaoId }">
 	</form>
 
 	<script>
