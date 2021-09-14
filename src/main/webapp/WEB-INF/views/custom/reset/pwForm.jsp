@@ -48,7 +48,7 @@ main, #layoutAuthentication_content {
 <body class="bg-primary">
 <c:if test="${sendEmail == 0 }">
 	<script>
-	swal('', '아이디가 올바르지않습니다.\n아이디를 다시 확인해주세요.', "error");
+	swal('', '아이디또는 이메일이 올바르지않습니다.\n아이디를 다시 확인해주세요.', "error");
 	</script>
 </c:if>
 <%@ include file="../header.jsp" %>

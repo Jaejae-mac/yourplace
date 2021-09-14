@@ -59,6 +59,7 @@ public class FindAccountPwController {
 		System.out.println();
 		UserVO vo = new UserVO();
 		vo.setUserId(id);
+		vo.setUserEmail(email);
 		//DB에 사용자 아이디가 존재하는지 검사한다.
 		//존재한다 1
 		//존재하지 않는다 0
@@ -66,7 +67,10 @@ public class FindAccountPwController {
 		
 		if(result.equals("1")) {
 			request.setAttribute("sendEmail", "1");
-			mailSendService.sendResetPwMail(email);
+			//임시토큰 발행.
+			String tokenNum = resetPasswordService.setAccessNum();
+			//메일전송.
+			mailSendService.sendResetPwMail(email,tokenNum);
 			return "index";
 		}
 		else {
@@ -79,9 +83,17 @@ public class FindAccountPwController {
 	//이용자가 받은 이메일에서 링크를 클릭하면
 	//이용자에게 
 	@GetMapping("/reset/resetPwForm.do")
-	public String resetPwForm(@RequestParam("email") String email) {
-		System.out.println(email);
-		return"reset/resetPwForm";
+	public String resetPwForm(@RequestParam("email") String email, @RequestParam("tnum") String tnum, HttpServletRequest request) {
+		System.out.println("사용자가 이메일에서 링크를 클릭했습니다.");
+		String result = resetPasswordService.getAccessNum(tnum);
+		if(result.equals("1")) {
+			return"reset/resetPwForm";
+		}
+		else {
+			request.setAttribute("noAccess", "1");
+			return "index";
+		}
+		
 	}
 	
 	//이용자가 받은 이메일 링크에서 새로운 비밀번호 입력 후

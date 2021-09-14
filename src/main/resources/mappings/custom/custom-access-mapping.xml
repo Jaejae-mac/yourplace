@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="AccessNum">
+	<delete id="deleteAccessNum" parameterType="String">
+		DELETE FROM access_control WHERE token=#{tokenNum}
+	</delete>
+	<insert id="setAccessNum" parameterType="String">
+		INSERT INTO access_control VALUES(#{tokenNum})
+	</insert>
+	<select id="getAccessNum" parameterType="String"
+		resultType="int">
+		SELECT count(*) from access_control WHERE
+		token=#{tokenNum};
+	</select>
+</mapper>

@@ -4,6 +4,7 @@ import com.yourplace.custom.login.vo.UserVO;
 
 public interface LoginDAO {
 	UserVO idCheck(UserVO vo);
+	UserVO idAndEmailCheck(UserVO vo);
 	//회원가입 관련 함수.
 	void regist(UserVO vo);
 	//로그인 처리를 위해 유저의정보를 얻어올 메서드
@@ -16,4 +17,8 @@ public interface LoginDAO {
 	void updatePw(UserVO vo);
 	
 	UserVO getAccount(UserVO vo);
+	
+	public void setAccessNum(String tokenNum);
+	public int getAccessNum(String tokenNum);
+	public void deleteAccessNum(String tokenNum);
 }

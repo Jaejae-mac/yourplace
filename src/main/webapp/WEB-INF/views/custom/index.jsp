@@ -35,6 +35,11 @@
 			swal('', '비밀번호 변경을 완료했습니다.', "success");
 		</script>
 	</c:if>
+	<c:if test="${noAccess == '1' }">
+	<script>
+		swal('', '유효하지 않은 페이지입니다.\n비밀번호 찾기를 다시 진행해주세요.', "success");
+		</script>
+	</c:if>
 	<%@ include file="header.jsp"%>
 	<div class="category_all"
 		style="position: fixed; top: 100px; left: 0; width: 100%; height: 100%; display: none; z-index: 9999; background-color: rgba(0, 0, 0, 0.2);"

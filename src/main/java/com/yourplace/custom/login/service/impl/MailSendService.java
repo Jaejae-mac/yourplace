@@ -42,7 +42,7 @@ public class MailSendService {
 	}
 
 	//비밀번호 재설정 메일 보내기
-	public String sendResetPwMail(String email) {
+	public String sendResetPwMail(String email,String tokenNum) {
 		System.out.println(mailSender);
 		
 		MimeMessage message = mailSender.createMimeMessage();
@@ -52,7 +52,7 @@ public class MailSendService {
 			String htmlStr = "<h1>[이메일 인증]</h1>"
 					+ "<p>아래 링크를 클릭하시면 이메일 인증이 완료됩니다.</p>"
 					+ "<a href='http://localhost:8080/reset/resetPwForm.do?email="
-					+ email+"'>"
+					+ email+"&tnum="+tokenNum+"'>"
 					+" -> 클릭하여 비밀번호 재설정 하기 <- </a>";
 			mailHandler.setSubject("[ yourplace 비밀번호 재설정 ]");
 			//받는이 이메일 주소 세팅.
