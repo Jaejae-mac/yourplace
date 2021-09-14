@@ -6,8 +6,12 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	 <typeAliases>
 		<typeAlias type="com.yourplace.admin.login.vo.AdminVO"
 			alias="myAdmin" />
+			
+			<typeAlias type="com.yourplace.custom.reserve.vo.ReserveVO" alias="reserveVO"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="mappings/test-mapper.xml" />
+		<mapper resource="mappings/ReserveMapper.xml"/>
+		
 	</mappers>
 </configuration>

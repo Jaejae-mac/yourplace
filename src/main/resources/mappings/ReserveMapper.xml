@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ReserveMapper">
+
+<insert id="insert">
+INSERT INTO reserve (place_num, rsv_id,rsv_name, rsv_year, rsv_month, rsv_date, rsv_start_t, rsv_end_t, rsv_purpose,
+rsv_request, rsv_refund_yn, rsv_refund_reason, rsv_pay, rsv_pay_mthd, pay_year, pay_month, pay_date, pay_num, pay_coup_yn, pay_coup_num)
+VALUES(#{placeNum}, ${rsvId},${rsvName},${rsvYear}, ${rsvMonth}, ${rsvDate}, ${rsvStartT}, ${rsvEndT}, ${rsvPurpose}, ${rsvRequest}, ${rsvRefundYN}, ${rsvRefundReason}, ${rsvPay}, ${payYear}, ${payMonth}, ${payDate}, ${payMethod}, ${payNum}, ${payCoupYN}, ${payCoupNum} );
+ 
+</insert>
+
+
+<!-- 
+
+CREATE TABLE reserve(
+place_num int NOT NULL,
+rsv_num int NOT NULL auto_increment,
+rsv_id varchar(50) not null,
+rsv_year int NOT NULL,
+rsv_month int NOT NULL,
+rsv_date int NOT NULL,
+rsv_start_t time NOT NULL,
+rsv_ene_t time NOT NULL,
+rsv_purpose VARCHAR(100) default null,
+rsv_request VARCHAR(200) default null,
+rsv_refund_yn VARCHAR(10) default null,
+rsv_refund_reason VARCHAR(100) not null,
+rsv_pay int NOT NULL,
+rsv_pay_mthd VARCHAR(100) NOT NULL,
+pay_year int NOT NULL,
+pay_month int NOT NULL,
+pay_date int NOT NULL,
+pay_num VARCHAR(20) NOT NULL,
+pay_coup_yn VARCHAR(20) NOT NULL,
+pay_coup_num VARCHAR(30) default null,
+primary key(rsv_num)
+)default character set utf8;
+-->
+
+
+
+<resultMap type="reserveVO" id="getReserveList">
+		<result property="placeNum" column="place_num" />
+		<result property="rsvName" column="rsv_name" />
+		<result property="rsvId" column="rsv_id" />
+		<result property="rsvYear" column="rsv_year" />
+		<result property="rsvMonth" column="rsv_month" />
+		<result property="rsvDate" column="rsv_date" />
+		<result property="rsvStartT" column="rsv_start_t" />
+		<result property="rsvEndTime" column="rsv_end_t" />
+		<result property="rsvPurpose" column="rsv_purpose" />
+		<result property="rsvRequest" column="rsv_request" />
+		<result property="rsvRefundYN" column="rsv_refund_yn" />
+		<result property="rsvRefundReason" column="rsv_refund_reason" />
+		<result property="rsvPay" column="rsv_pay" />
+		<result property="rsvPayMthd" column="rsv_pay_mthd" />
+		<result property="payYear" column="pay_year" />
+		<result property="payMonth" column="pay_month" />
+		<result property="payDate" column="pay_date" />
+		<result property="payNum" column="pay_num" />
+		<result property="payCoupYN" column="pay_coup_yn" />
+		<result property="payCoupNum" column="pay_coup_num" />
+	</resultMap>
+
+	
+	<select id="getAll" resultMap="getReserveList">
+		SELECT * FROM reserve
+	</select>
+	
+	
+	<resultMap type="reserveVO" id="getreservedTime">
+	<result property="rsvStartT" column="rsv_start_t" />
+	<result property="rsvEndTime" column="rsv_end_t" />
+	</resultMap>
+	
+	
+	<select id="getReservedTime" resultMap="getreservedTime">
+	<trim suffixOverrides=",">
+		SELECT rsv_start_t,
+		rsv_end_t FROM reserve
+		</trim>
+		</select>
+
+</mapper>
