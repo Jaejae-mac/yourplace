@@ -86,6 +86,9 @@
 			</div>
 		</div>
 	</div>
+	<form method="post" action="/find/account/restlt.do" hidden="hidden" id="sendTel">
+		<input type="hidden" name="userTel" id="userTel">
+	</form>
 	<script>
       $(document).on("click", "#tel", function () {
         var userTel = $("#userPhoneNum").val();
@@ -140,7 +143,9 @@
               icon: "success",
               title: "인증번호 일치합니다.",
             });
-            locasation.href="/find/account/restlt.do";
+            $("#userTel").val(userTel);
+            $("#sendTel").submit();
+            
           } else {
             Swal.fire({
               icon: "error",

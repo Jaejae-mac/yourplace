@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,16 +20,14 @@ import com.yourplace.custom.login.vo.UserVO;
 @Controller
 public class RegistController {
 	
+	//아이디 중복체크 서비스.
 	@Autowired
 	private IdCheckService idCheckService;
+	//회원가입 서비스.
 	@Autowired
 	private RegistService registService;
 	
-	//스프링 security비밀번호 암호화 및 비밀번호 대조.
-	@Autowired
-	private BCryptPasswordEncoder passEncoder;
-	//passEncoder.encode(암호화할 비밀번호.)
-	//if(passEncoder.matches(입력받은 비밀번호 ,암호화된 비밀번호) 로 비밀번호 비교 가능.
+
 	
 	//회원 가입 모듈로 보내주는 메서드.
 	@GetMapping("/register.do")
@@ -50,6 +47,7 @@ public class RegistController {
 	}
 	
 	//번호 인증 처리 메서드.
+	//비동기로 전화번호 인증을 처리해준다.
 	@GetMapping("/authentication.do")
 	@ResponseBody
 	public String authNum(String userTel) {//전화번호 확인 메서드.
@@ -57,23 +55,21 @@ public class RegistController {
 		String phoneNumber= userTel;
 		Random rand = new Random();
 		String numStr = "";
+		//랜덤하게 생성된 6자리의 인증번호를 만든다.
 		for(int i = 0 ; i < 6; i++) {
 			String randNum = Integer.toString(rand.nextInt(10));
 			numStr += randNum;
 		}
 		System.out.println("[RegistController] 생성된 6자리 인증번호 : "+ numStr);
+		//certificationPhoneNumber 메서드를 통해 사용자번호로 생성된 인증번호를 전송한다.
 		SMSCertification.certificationPhoneNumber(phoneNumber, numStr);
+		//사용자에게 문자메세지 전송후, view에도 동일한 인증번호를 전달한다.
 		return numStr;
 	}
 	
 	//회원가입 처리 메서드.(INSERT)
 	@PostMapping("/regist.do")
 	public String regist(UserVO vo, HttpServletRequest request) {
-		//패스워드 암호화 과정.
-		String password = vo.getUserPw();
-		String encodePw = passEncoder.encode(password);
-		vo.setUserPw(encodePw);
-		System.out.println(vo.getKakaoId());
 		//제대로된 아이디와 비밀번호 가 전송되었을 경우.
 		if(vo.getUserId().length() > 0 && vo.getUserPw().length() > 0) {
 			//회원가입 완료후 아이디 세션 생성.
@@ -83,7 +79,7 @@ public class RegistController {
 			registService.insertUser(vo);
 		}
 		
-		//회원가입후 홈으로 보내주고, 쿠폰을 발급해 주어야 한다.
+		//회원가입후 홈으로 보내주고, 쿠폰을 발급해 주어야 한다. - 미구현.
 		return "redirect:home.do";
 	}
 }

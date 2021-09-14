@@ -51,6 +51,11 @@ public class LoginDAOImpl implements LoginDAO {
 	public void updatePw(UserVO vo) {
 		sqlSessionTemplate.update("UserDAO.updatePassword", vo);
 	}
+
+	@Override
+	public UserVO getAccount(UserVO vo) {
+		return (UserVO) sqlSessionTemplate.selectOne("UserDAO.getAccount", vo);
+	}
 	
 	
 

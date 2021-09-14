@@ -19,13 +19,15 @@ public class LoginController {
 	private LoginUserService loginUserService;
 	@Autowired
 	private KakaoUserService KakaoUserService;
-
+	
+	//로그인 폼을 호출해주는 컨트롤러.
 	@GetMapping("/loginForm.do")
 	public String loginForm() {
 		System.out.println("[ 로그인 폼 호출 ]");
 		return "login/loginForm";
 	}
-
+	
+	//로그인 처리를 해주는 컨트롤러.
 	@PostMapping("/login.do")
 	public String login(UserVO vo, HttpServletRequest request, Model model) {
 		int result = loginUserService.getUser(vo);
@@ -44,17 +46,20 @@ public class LoginController {
 		return "redirect:loginForm.do";
 	}
 
+	//카카오 로그인을 처리해주는 컨트롤러.
 	@PostMapping("/kakao/login.do")
 	public String loginKakao(HttpServletRequest request, Model model) {
-		System.out.println("[ 카카오 로그인 ]");
-		System.out.println(request.getParameter("kakaoid"));
-		System.out.println(request.getParameter("kakaoemail"));
-		System.out.println(request.getParameter("kakaoname"));
+		System.out.println("[ 카카오 로그인 시도]");
+//		System.out.println(request.getParameter("kakaoid"));
+//		System.out.println(request.getParameter("kakaoemail"));
+//		System.out.println(request.getParameter("kakaoname"));
 		String kakaoId = request.getParameter("kakaoid");
 		UserVO vo = new UserVO();
 		vo.setKakaoId(kakaoId);
 		UserVO kakao = KakaoUserService.getKakao(vo);
 		if (kakao == null) {// 가입한적이 없다면 가입하도록 회원가입창으로 유도.
+			//회원가입 폼에 카카오 에서 동의체크된 항목들을 가져와야 하기 때문에, 
+			//객체에 실어서 보내줘야 한다.
 			model.addAttribute("kakaoId", request.getParameter("kakaoid"));
 			model.addAttribute("kakaoEmail", request.getParameter("kakaoemail"));
 			model.addAttribute("kakaoName", request.getParameter("kakaoname"));
@@ -73,8 +78,10 @@ public class LoginController {
 
 	}
 	
+	//로그아웃 컨트롤러.
 	@GetMapping("/logout.do")
 	public String logout(HttpServletRequest request) {
+		//로그아웃시 현존하는 유저와 관련된 세션을 모두 삭제해 주어야 하기 때문에 invalidate 해준다.
 		HttpSession session = request.getSession();
 		System.out.println(session.getAttribute("userId") +"님이 로그아웃 되었습니다.");
 		session.invalidate();

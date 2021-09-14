@@ -14,4 +14,6 @@ public interface LoginDAO {
 	UserVO getIdEmail(UserVO vo);
 	
 	void updatePw(UserVO vo);
+	
+	UserVO getAccount(UserVO vo);
 }

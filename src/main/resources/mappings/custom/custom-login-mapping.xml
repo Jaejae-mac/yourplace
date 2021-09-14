@@ -69,4 +69,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="updatePassword" parameterType="myUser">
 		UPDATE member SET user_pw=#{userPw} WHERE user_email=#{userEmail}
 	</update>
+	
+	<select id="getAccount" resultMap="userResult">
+		SELECT user_id,user_reg_date FROM member WHERE
+		user_tel = #{userTel}
+	</select>
 </mapper>
