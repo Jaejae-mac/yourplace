@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="UserDAO">
+	<resultMap type="myUser" id="userResult">
+		<id property="userNum" column="user_num" />
+		<result property="userType" column="user_type" />
+		<result property="userName" column="user_name" />
+		<result property="userId" column="user_id" />
+		<result property="userNickName" column="user_nick_name" />
+		<result property="userPw" column="user_pw" />
+		<result property="userTel" column="user_tel" />
+		<result property="userEmail" column="user_email" />
+		<result property="userSex" column="user_sex" />
+		<result property="userProfileImg" column="user_profile_img" />
+		<result property="userIntro" column="user_intro" />
+		<result property="userRegDate" column="user_reg_date" />
+		<result property="userSmsAgree" column="user_sms_agree" />
+		<result property="userEmailAgree" column="user_email_agree" />
+		<result property="kakaoId" column="kakao_id" />
+	</resultMap>
+
+
+	<select id="getUserId" resultMap="userResult">
+		SELECT user_id FROM member
+		WHERE user_id = #{userId}
+	</select>
+
+	<select id="getKakao" resultMap="userResult">
+		SELECT * FROM member
+		WHERE
+		kakao_id = #{kakaoId}
+	</select>
+
+	<select id="getResetPw" resultMap="userResult">
+		SELECT count(*) FROM member
+		WHERE user_id = #{userId} and user_email = #{userEmail}
+	</select>
+	
+	<select id="getUser" resultMap="userResult">
+		SELECT * FROM member WHERE
+		user_id = #{userId}
+	</select>
+	<insert id="insertUser" parameterType="myUser">
+		INSERT INTO member(
+		user_id,
+		user_pw,
+		user_name,
+		user_nick_name,
+		user_tel,
+		user_email,
+		user_sex,
+		kakao_id
+		)
+		VALUES(
+		#{userId},
+		#{userPw},
+		#{userName},
+		#{userNickName},
+		#{userTel},
+		#{userEmail},
+		#{userSex},
+		#{kakaoId}
+		)
+	</insert>
+	
+	<update id="updatePassword" parameterType="myUser">
+		UPDATE member SET user_pw=#{userPw} WHERE user_email=#{userEmail}
+	</update>
+</mapper>
