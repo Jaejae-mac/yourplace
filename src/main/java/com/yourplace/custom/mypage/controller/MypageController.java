@@ -8,8 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.yourplace.custom.login.service.MyPageService;
 import com.yourplace.custom.login.vo.UserVO;
+import com.yourplace.custom.mypage.service.MyPageService;
 
 @Controller
 public class MypageController {

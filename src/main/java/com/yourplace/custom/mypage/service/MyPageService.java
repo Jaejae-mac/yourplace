@@ -1,4 +1,4 @@
-package com.yourplace.custom.login.service;
+package com.yourplace.custom.mypage.service;
 
 import com.yourplace.custom.login.vo.UserVO;
 
