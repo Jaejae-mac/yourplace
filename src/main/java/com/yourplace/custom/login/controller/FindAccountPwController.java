@@ -84,4 +84,12 @@ public class FindAccountPwController {
 		request.setAttribute("sendEmail", "2");
 		return "index";
 	}
+	
+	//------------------------------------------------------------
+	//아이디 찾기 메서드
+	//폼으로 이동.
+	@GetMapping("/find/account/accountForm.do")
+	public String accountForm() {
+		return "findAccount/findIdForm";
+	}
 }

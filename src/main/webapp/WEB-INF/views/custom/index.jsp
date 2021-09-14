@@ -15,7 +15,7 @@
 <title>YourPlace Home</title>
 </head>
 <body>
-<%@ include file="header.jsp" %>
+
 <!-- 패스워드 재설정 이메일을 보내면 홈으로 이동된다. -->
 <!-- 홈으로 이동 후 메일이 전송되었다고 사용자에게 알리는 부분이 되겠다. -->
 <c:if test="${sendEmail == '1' }">
@@ -28,6 +28,7 @@
 	swal('', '비밀번호 변경을 완료했습니다.', "success");
 	</script>
 </c:if>
+<%@ include file="header.jsp" %>
 		<div class="category_all"
 			style="position: fixed; top: 100px; left: 0; width: 100%; height: 100%; display: none; z-index: 9999; background-color: rgba(0, 0, 0, 0.2);"
 			onclick="toggle_category_all()">
@@ -769,11 +770,11 @@
     <div class="h_row_center" style="position: absolute; right: 12px;">
       <div class="h_center" style="width: 40px; height: 40px; border: 1px solid rgb(239, 243, 245); background-color: rgb(255, 255, 255); border-radius: 20px; margin-right: 10px; cursor: pointer;"> 
           <!-- onclick event 이전페이지로-->
-        <img onclick=" " src="icon/chevron_left_b.svg"  style="width: 16px; height: 16px;">
+        <img onclick=" " src="<c:url value="/resources/custom/icon/chevron_right_b.svg" />"  style="width: 16px; height: 16px;">
       </div> 
       <div class="h_center" style="width: 40px; height: 40px; border: 1px solid rgb(239, 243, 245); background-color: rgb(255, 255, 255); border-radius: 20px; cursor: pointer;">
           <!-- onclick event 다음페이지로-->
-        <img onclick=" " src="icon/chevron_left_b.svg"  style="width: 16px; height: 16px; transform: rotate(180deg);">
+        <img onclick=" " src="<c:url value="/resources/custom/icon/chevron_right_b.svg" />"  style="width: 16px; height: 16px; transform: rotate(180deg);">
       </div>
     </div>
   </div>
@@ -1177,7 +1178,7 @@
 <div class="card_layout" style="padding: 0px 7.5px 0px 0px;">
   <div class="card" >
       <div class="card_header" >
-          <img src="image/신규4.jpg"  alt="이미지 넣는 곳" /><!-- 데이터 베이스의 해당 image 가져오기-->
+          <img src="<c:url value="/resources/custom/image/신규4.jpg" />"  alt="이미지 넣는 곳" /><!-- 데이터 베이스의 해당 image 가져오기-->
       </div>
       <div class="card_body">
           <div class="card_body_header">

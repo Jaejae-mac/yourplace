@@ -171,7 +171,7 @@ input:focus{
 							style="display: flex; flex-direction: row; align-items: center; justify-content: center">
 							<p
 								style="margin-left: 8px; margin-right: 8px; font-size: 12px; font-weight: 500; font-stretch: normal; font-style: normal; line-height: 1.17; letter-spacing: normal; color: var(- -grey-050); cursor: pointer;"
-								onclick="window.location.href='findaccount.html'">아이디 찾기</p>
+								onclick="location.href='/find/account/accountForm.do'">아이디 찾기</p>
 							<div
 								style="width: 10px; height: 1px; transform: rotate(90deg); background-color: var(- -grey-020);"></div>
 
