@@ -20,13 +20,6 @@ public class AdminTest {
 	@Test
 	@Transactional
 	public void selectOneTest() {
-
-		AdminVO vo = new AdminVO();
-		vo.setTestId("testAdmin1");
-		vo.setAno(1);
-		AdminVO admin = adminService.getAdmin(vo);
-		System.out.println("test getAdmin : " + admin.toString());
-		assertNotNull(admin);
 		
 	}
 }

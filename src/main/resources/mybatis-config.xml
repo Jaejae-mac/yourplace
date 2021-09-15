@@ -17,11 +17,9 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="mappings/test-mapper.xml" />
 		<mapper resource="mappings/host/host-login-mapping.xml" />
 		<mapper resource="mappings/custom/custom-login-mapping.xml" />
-<<<<<<< HEAD
 		<mapper resource="mappings/custom/custom-access-mapping.xml" />
-=======
 		<mapper resource="mappings/admin/admin-login-mapping.xml" />
 		<mapper resource="mappings/admin/admin-allview-mapping.xml" />
->>>>>>> f8105eba014fdfea64c1c66e11783b014fee8cf1
+
 	</mappers>
 </configuration>

@@ -22,7 +22,7 @@
 <title>YourPlace Home</title>
 </head>
 <body>
-<<<<<<< HEAD
+
 
 	<!-- 패스워드 재설정 이메일을 보내면 홈으로 이동된다. -->
 	<!-- 홈으로 이동 후 메일이 전송되었다고 사용자에게 알리는 부분이 되겠다. -->
@@ -1515,11 +1515,5 @@
 	</script>
 	<!-- script 끝 -->
 	<%@ include file="footer.jsp"%>
-=======
-<h1>YOUR PLACE!</h1>
-<form action="/detail.do">
-	<input type="submit" value="GO" />
-</form>
->>>>>>> f8105eba014fdfea64c1c66e11783b014fee8cf1
 </body>
 </html>

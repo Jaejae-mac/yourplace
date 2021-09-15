@@ -5,8 +5,8 @@ import java.util.Random;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,12 +27,8 @@ public class RegistController {
 	//회원가입 서비스.
 	@Autowired
 	private RegistService registService;
-	
-	//스프링 security비밀번호 암호화 및 비밀번호 대조.
-	@Autowired
-	private BCryptPasswordEncoder passEncoder;
-	//passEncoder.encode(암호화할 비밀번호.)
-	//if(passEncoder.matches(입력받은 비밀번호 ,암호화된 비밀번호) 로 비밀번호 비교 가능.
+
+
 	
 	//회원 가입 모듈로 보내주는 메서드.
 	@GetMapping("/register.do")
@@ -85,13 +81,6 @@ public class RegistController {
 		}
 		
 		//회원가입후 홈으로 보내주고, 쿠폰을 발급해 주어야 한다. - 미구현.
-	public String regist(UserVO vo) {
-		//패스워드 암호화 과정.
-		String password = vo.getUserPw();
-		String encodePw = passEncoder.encode(password);
-		vo.setUserPw(encodePw);
-		System.out.println(vo.getKakaoId());
-		registService.insertUser(vo);
 		return "redirect:home.do";
 	}
 }

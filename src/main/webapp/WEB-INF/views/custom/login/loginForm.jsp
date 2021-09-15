@@ -59,12 +59,9 @@
 .kakao_btn {
 	position: absolute;
 }
-<<<<<<< HEAD
 input:focus{
 	outline:none;
 }
-=======
->>>>>>> f8105eba014fdfea64c1c66e11783b014fee8cf1
 </style>
 <script>
 	//초기화 시키기. 
@@ -149,11 +146,8 @@ input:focus{
 							</div>
 
 							<div
-<<<<<<< HEAD
 								style="margin-top: 20px; height: 52px; border-radius: 8px; background-color: var(- -blue-020); display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer;">
-=======
-								style="margin-top: 20px; height: 52px; border-radius: 8px; background-color: var(- -blue-020); display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; background: yellow">
->>>>>>> f8105eba014fdfea64c1c66e11783b014fee8cf1
+
 								<label for="login_kakao" class="login_kakao"><img
 									src="<c:url value="/resources/img/kakao/kakao_login_btn.png" />"
 									alt="" style="height: 50px;"></label> <input type="button"
@@ -171,7 +165,6 @@ input:focus{
 
 
 					<!-- 아이디, 비밀번호 찾기, 회원가입-->
-<<<<<<< HEAD
 					<div style="margin-top: 20px;">
 						<!-- 아이디 찾기 : '/find/account.do '-->
 						<!-- original : "window.location.href='/password/email'" -->
@@ -182,55 +175,26 @@ input:focus{
 								onclick="location.href='/find/account/accountForm.do'">아이디 찾기</p>
 							<div
 								style="width: 10px; height: 1px; transform: rotate(90deg); background-color: var(- -grey-020);"></div>
-=======
-                        <div style="margin-top: 20px;"> <!-- 아이디 찾기 : '/find/account.do '-->
-                            <!-- original : "window.location.href='/password/email'" -->
-                            <div style="display: flex; flex-direction: row; align-items: center; justify-content: center">
-                                <p style="margin-left: 8px; margin-right: 8px;font-size: 12px;font-weight: 500;font-stretch: normal;font-style: normal;line-height: 1.17;letter-spacing: normal;color: var(--grey-050); cursor: pointer;"
-                                onclick="window.location.href='findaccount.html'">
-                                    아이디 찾기
-                                </p>
-                                <div style="width: 10px;height: 1px;transform: rotate(90deg);background-color: var(--grey-020);"></div>
->>>>>>> f8105eba014fdfea64c1c66e11783b014fee8cf1
+
 
                                 <!-- original: "window.location.href='/service'" -->
                                 <!-- <p style="margin-left: 8px; margin-right: 8px;font-size: 12px;font-weight: 500;font-stretch: normal;font-style: normal;line-height: 1.17;letter-spacing: normal;color: var(--grey-050); cursor: pointer;"
                                 onclick="window.location.href='service.html'">
                                     고객센터
                                 </p> -->
-<<<<<<< HEAD
                                 <p style="margin-left: 8px; margin-right: 8px;font-size: 12px;font-weight: 500;font-stretch: normal;font-style: normal;line-height: 1.17;letter-spacing: normal;color: var(--grey-050); cursor: pointer;"
-                                onclick="window.location.href='/findpassword.html'">
+                                onclick="location.href='/reset/passwordForm.do'">
                                     비밀번호 찾기
                                 </p>
                                 <div style="width: 10px;height: 1px;transform: rotate(90deg);background-color: var(--grey-020);"></div>
 
                                 <!-- original : "window.location.href='/register'" -->
                                 <p style="margin-left: 8px; margin-right: 8px;font-size: 12px;font-weight: 500;font-stretch: normal;font-style: normal;line-height: 1.17;letter-spacing: normal;text-align: right;color: var(--blue-030); cursor: pointer;"
-                                onclick="window.location.href='register.html'">
+                                onclick="location.href='/register.do'">
                                     회원가입
                                 </p>
                             </div>
                         </div>
-=======
-							<p
-								style="margin-left: 8px; margin-right: 8px; font-size: 12px; font-weight: 500; font-stretch: normal; font-style: normal; line-height: 1.17; letter-spacing: normal; color: var(- -grey-050); cursor: pointer;"
-								onclick="location.href='/reset/passwordForm.do'">비밀번호 찾기
-							</p>
-							<div
-								style="width: 10px; height: 1px; transform: rotate(90deg); background-color: var(- -grey-020);"></div>
-
-							<!-- original : "window.location.href='/register'" -->
-							<p
-								style="margin-left: 8px; margin-right: 8px; font-size: 12px; font-weight: 500; font-stretch: normal; font-style: normal; line-height: 1.17; letter-spacing: normal; text-align: right; color: var(- -blue-030); cursor: pointer;"
-								onclick="callRegisterFormUser()">회원가입</p>
-							<p
-								style="margin-left: 8px; margin-right: 8px; font-size: 12px; font-weight: 500; font-stretch: normal; font-style: normal; line-height: 1.17; letter-spacing: normal; text-align: right; color: var(- -blue-030); cursor: pointer;"
-								onclick="callRegisterFormHost()">호스트 회원가입</p>
-						</div>
-					</div>
->>>>>>> 5f5b202b4562e16c94c13a11ad91f9135517b8f6
-
 					<div style="height: 110px;"></div>
 
 					<!-- 마무리 문구 -->
@@ -281,11 +245,8 @@ input:focus{
 							console.log(id);
 							console.log(email);
 							console.log(name);
-<<<<<<< HEAD
 							console.log(res.ACCESS_TOKEN);
-=======
-							
->>>>>>> f8105eba014fdfea64c1c66e11783b014fee8cf1
+
 							$('#kakaoid').val(id);
 							$('#kakaoemail').val(email);
 							$('#kakaoname').val(name);
