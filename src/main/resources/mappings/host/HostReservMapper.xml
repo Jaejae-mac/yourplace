@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="HostReservMapper">
+
+
+<resultMap type="HostReservVO" id="getAllReserve">
+		<result property="placeName" column="place_Name" />
+		<result property="reserveNum" column="rsv_num" />
+		<result property="reserveName" column="rsv_name" />
+		<result property="startTime" column="rsv_start_t" />
+		<result property="endTime" column="rsv_end_t" />
+		<result property="personNum" column="personNum" />
+		<result property="payPrice" column="rsv_pay"/>
+		
+	</resultMap>
+
+	
+	<select id="getAllReserve" resultMap="getAllReserve">
+	<trim suffixOverrides=",">
+		SELECT place_Name,
+		rsv_num,
+		rsv_name,
+		rsv_year,
+		rsv_month,
+		rsv_date,
+		rsv_start_t,
+		rsv_end_t,
+		personNum,
+		rsv_pay from reserve
+		</trim>
+	</select>
+	
+<resultMap type="HostReservVO" id="getDate">
+	<result property="reserveYear" column="rsv_year" />
+		<result property="reserveMonth" column="rsv_month" />
+		<result property="reserveDate" column="rsv_date" />
+</resultMap>
+
+<select id="getReservDate" resultMap="getDate">
+<trim suffixOverrides=",">
+SELECT rsv_year,
+rsv_month,
+rsv_date from reserve
+</trim>
+</select>
+
+</mapper>
