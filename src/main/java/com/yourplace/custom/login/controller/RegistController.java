@@ -5,6 +5,7 @@ import java.util.Random;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,7 +27,7 @@ public class RegistController {
 	//회원가입 서비스.
 	@Autowired
 	private RegistService registService;
-	
+
 
 	
 	//회원 가입 모듈로 보내주는 메서드.

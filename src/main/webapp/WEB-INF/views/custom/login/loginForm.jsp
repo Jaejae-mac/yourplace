@@ -147,6 +147,7 @@ input:focus{
 
 							<div
 								style="margin-top: 20px; height: 52px; border-radius: 8px; background-color: var(- -blue-020); display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer;">
+
 								<label for="login_kakao" class="login_kakao"><img
 									src="<c:url value="/resources/img/kakao/kakao_login_btn.png" />"
 									alt="" style="height: 50px;"></label> <input type="button"
@@ -175,28 +176,25 @@ input:focus{
 							<div
 								style="width: 10px; height: 1px; transform: rotate(90deg); background-color: var(- -grey-020);"></div>
 
-							<!-- original: "window.location.href='/service'" -->
-							<!-- <p style="margin-left: 8px; margin-right: 8px;font-size: 12px;font-weight: 500;font-stretch: normal;font-style: normal;line-height: 1.17;letter-spacing: normal;color: var(--grey-050); cursor: pointer;"
+
+                                <!-- original: "window.location.href='/service'" -->
+                                <!-- <p style="margin-left: 8px; margin-right: 8px;font-size: 12px;font-weight: 500;font-stretch: normal;font-style: normal;line-height: 1.17;letter-spacing: normal;color: var(--grey-050); cursor: pointer;"
                                 onclick="window.location.href='service.html'">
                                     고객센터
                                 </p> -->
-							<p
-								style="margin-left: 8px; margin-right: 8px; font-size: 12px; font-weight: 500; font-stretch: normal; font-style: normal; line-height: 1.17; letter-spacing: normal; color: var(- -grey-050); cursor: pointer;"
-								onclick="location.href='/reset/passwordForm.do'">비밀번호 찾기
-							</p>
-							<div
-								style="width: 10px; height: 1px; transform: rotate(90deg); background-color: var(- -grey-020);"></div>
+                                <p style="margin-left: 8px; margin-right: 8px;font-size: 12px;font-weight: 500;font-stretch: normal;font-style: normal;line-height: 1.17;letter-spacing: normal;color: var(--grey-050); cursor: pointer;"
+                                onclick="location.href='/reset/resetPwForm.do'">
+                                    비밀번호 찾기
+                                </p>
+                                <div style="width: 10px;height: 1px;transform: rotate(90deg);background-color: var(--grey-020);"></div>
 
-							<!-- original : "window.location.href='/register'" -->
-							<p
-								style="margin-left: 8px; margin-right: 8px; font-size: 12px; font-weight: 500; font-stretch: normal; font-style: normal; line-height: 1.17; letter-spacing: normal; text-align: right; color: var(- -blue-030); cursor: pointer;"
-								onclick="callRegisterFormUser()">회원가입</p>
-							<p
-								style="margin-left: 8px; margin-right: 8px; font-size: 12px; font-weight: 500; font-stretch: normal; font-style: normal; line-height: 1.17; letter-spacing: normal; text-align: right; color: var(- -blue-030); cursor: pointer;"
-								onclick="callRegisterFormHost()">호스트 회원가입</p>
-						</div>
-					</div>
-
+                                <!-- original : "window.location.href='/register'" -->
+                                <p style="margin-left: 8px; margin-right: 8px;font-size: 12px;font-weight: 500;font-stretch: normal;font-style: normal;line-height: 1.17;letter-spacing: normal;text-align: right;color: var(--blue-030); cursor: pointer;"
+                                onclick="location.href='/register.do'">
+                                    회원가입
+                                </p>
+                            </div>
+                        </div>
 					<div style="height: 110px;"></div>
 
 					<!-- 마무리 문구 -->
@@ -248,6 +246,7 @@ input:focus{
 							console.log(email);
 							console.log(name);
 							console.log(res.ACCESS_TOKEN);
+
 							$('#kakaoid').val(id);
 							$('#kakaoemail').val(email);
 							$('#kakaoname').val(name);

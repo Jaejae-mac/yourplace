@@ -21,4 +21,5 @@ public interface LoginDAO {
 	public void setAccessNum(String tokenNum);
 	public int getAccessNum(String tokenNum);
 	public void deleteAccessNum(String tokenNum);
+
 }

@@ -6,6 +6,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<typeAliases>
 		<typeAlias type="com.yourplace.admin.login.vo.AdminVO"
 			alias="myAdmin" />
+		<typeAlias type="com.yourplace.admin.memberview.vo.MemberVO"
+			alias="myMember" />
 		<typeAlias type="com.yourplace.host.login.vo.HostVO"
 			alias="myHost" />
 		<typeAlias type="com.yourplace.custom.login.vo.UserVO"
@@ -16,5 +18,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="mappings/host/host-login-mapping.xml" />
 		<mapper resource="mappings/custom/custom-login-mapping.xml" />
 		<mapper resource="mappings/custom/custom-access-mapping.xml" />
+		<mapper resource="mappings/admin/admin-login-mapping.xml" />
+		<mapper resource="mappings/admin/admin-allview-mapping.xml" />
+
 	</mappers>
 </configuration>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="MemberDAO">
+	<resultMap type="myMember" id="memberResult">
+		<id property="userNum" column="user_num" />
+		<result property="userType" column="user_type" />
+		<result property="userName" column="user_name" />
+		<result property="userId" column="user_id" />
+		<result property="userTel" column="user_tel" />
+		<result property="userEmail" column="user_email" />
+		<result property="userSex" column="user_sex" />
+		<result property="userRegDate" column="user_reg_date" />
+		<result property="userSmsAgree" column="user_sms_agree" />
+		<result property="userEmailAgree" column="user_email_agree" />
+	</resultMap>
+
+	<!-- 전체조회 -->
+	<select id="getMemberList" resultMap="memberResult">
+		SELECT * FROM member
+	</select>
+	
+	<!-- 회원 삭제 -->
+	<delete id="deleteMember">
+		DELETE FROM member WHERE user_id = #{userId};
+	</delete>
+
+</mapper>
