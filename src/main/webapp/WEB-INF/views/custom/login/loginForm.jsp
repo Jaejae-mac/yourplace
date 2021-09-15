@@ -183,7 +183,7 @@ input:focus{
                                     고객센터
                                 </p> -->
                                 <p style="margin-left: 8px; margin-right: 8px;font-size: 12px;font-weight: 500;font-stretch: normal;font-style: normal;line-height: 1.17;letter-spacing: normal;color: var(--grey-050); cursor: pointer;"
-                                onclick="location.href='/reset/resetPwForm.do'">
+                                onclick="location.href='/reset/passwordForm.do'">
                                     비밀번호 찾기
                                 </p>
                                 <div style="width: 10px;height: 1px;transform: rotate(90deg);background-color: var(--grey-020);"></div>
