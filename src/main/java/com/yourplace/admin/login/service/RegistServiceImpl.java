@@ -18,7 +18,6 @@ public class RegistServiceImpl implements RegistService {
 		System.out.println("Service 입력된 값: " + vo.toString());
 		adminDAO.insertAdmin(vo);
 		
-		
 	}
 
 }

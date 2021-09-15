@@ -23,12 +23,9 @@ public class RegisterController {
 	
 	@Autowired
 	private RegistService regService;
-	
+
 	@Autowired
-	private AdminDAO adminDAO;
-	
-	@Autowired
-	private BCryptPasswordEncoder passsEncoder;
+	private BCryptPasswordEncoder passEncoder;
 	
 	@Autowired
 	private IdCheckService idckService;
@@ -40,11 +37,11 @@ public class RegisterController {
 		return "register";
 	}
 	
+	//아이디 체크
 	@PostMapping("/idcheck.mdo")
 	@ResponseBody
 	public String idCheck(String id)
 	{
-		
 		System.out.println("AJAX id check");
 		AdminVO vo = new AdminVO();
 		vo.setAdminId(id);
@@ -60,6 +57,11 @@ public class RegisterController {
 		System.out.println("---------- 추가되는 회원정보 ----------");
 		System.out.println(adminVO.toString());
 		System.out.println("----------------------------------");
+		
+		//password encoder
+		String password = adminVO.getAdminPw();
+		String encodePw = passEncoder.encode(password);
+		adminVO.setAdminPw(encodePw);
 		
 		//Service를 통해 받아온 정보값을 등록
 		regService.insertAdmin(adminVO);

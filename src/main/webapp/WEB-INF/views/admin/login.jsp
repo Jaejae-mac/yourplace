@@ -81,13 +81,13 @@
                         <a class="small" href="password.html"
                           >Forgot Password?</a
                         >
-                        <a class="btn btn-primary" href="index.html">Login</a>
+                        <a class="btn btn-primary" href="memberView.mdo">Login</a>
                       </div>
                     </form>
                   </div>
                   <div class="card-footer text-center py-3">
                     <div class="small">
-                      <a href="register.html">Need an account? Sign up!</a>
+                      <a href="register.mdo">Need an account? Sign up!</a>
                     </div>
                   </div>
                 </div>
@@ -117,6 +117,6 @@
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
       crossorigin="anonymous"
     ></script>
-    <script src="js/scripts.js"></script>
+    <script src="resources/css/admin/js/scripts.js"></script>
   </body>
 </html>
