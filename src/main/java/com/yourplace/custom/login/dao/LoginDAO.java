@@ -11,6 +11,7 @@ public interface LoginDAO {
 	UserVO getUser(UserVO vo);
 	//카카오 회원가입을 진행한 적이 있는지 여부 판단.
 	UserVO getKakao(UserVO vo);
+<<<<<<< HEAD
 	
 	UserVO getIdEmail(UserVO vo);
 	
@@ -21,4 +22,6 @@ public interface LoginDAO {
 	public void setAccessNum(String tokenNum);
 	public int getAccessNum(String tokenNum);
 	public void deleteAccessNum(String tokenNum);
+=======
+>>>>>>> f8105eba014fdfea64c1c66e11783b014fee8cf1
 }

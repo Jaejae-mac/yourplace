@@ -3,7 +3,10 @@ package com.yourplace.custom.login.controller;
 import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
+<<<<<<< HEAD
 import javax.servlet.http.HttpSession;
+=======
+>>>>>>> f8105eba014fdfea64c1c66e11783b014fee8cf1
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,7 +30,15 @@ public class RegistController {
 	@Autowired
 	private RegistService registService;
 	
+<<<<<<< HEAD
 
+=======
+	//스프링 security비밀번호 암호화 및 비밀번호 대조.
+	@Autowired
+	private BCryptPasswordEncoder passEncoder;
+	//passEncoder.encode(암호화할 비밀번호.)
+	//if(passEncoder.matches(입력받은 비밀번호 ,암호화된 비밀번호) 로 비밀번호 비교 가능.
+>>>>>>> f8105eba014fdfea64c1c66e11783b014fee8cf1
 	
 	//회원 가입 모듈로 보내주는 메서드.
 	@GetMapping("/register.do")
@@ -69,6 +80,7 @@ public class RegistController {
 	
 	//회원가입 처리 메서드.(INSERT)
 	@PostMapping("/regist.do")
+<<<<<<< HEAD
 	public String regist(UserVO vo, HttpServletRequest request) {
 		//제대로된 아이디와 비밀번호 가 전송되었을 경우.
 		if(vo.getUserId().length() > 0 && vo.getUserPw().length() > 0) {
@@ -80,6 +92,15 @@ public class RegistController {
 		}
 		
 		//회원가입후 홈으로 보내주고, 쿠폰을 발급해 주어야 한다. - 미구현.
+=======
+	public String regist(UserVO vo) {
+		//패스워드 암호화 과정.
+		String password = vo.getUserPw();
+		String encodePw = passEncoder.encode(password);
+		vo.setUserPw(encodePw);
+		System.out.println(vo.getKakaoId());
+		registService.insertUser(vo);
+>>>>>>> f8105eba014fdfea64c1c66e11783b014fee8cf1
 		return "redirect:home.do";
 	}
 }

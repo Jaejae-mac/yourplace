@@ -11,14 +11,20 @@ import com.yourplace.custom.login.vo.UserVO;
 public class LoginDAOImpl implements LoginDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
+<<<<<<< HEAD
 
 	// 유저 아이디존재여부 확인하기.
+=======
+	
+	//유저 아이디존재여부 확인하기.
+>>>>>>> f8105eba014fdfea64c1c66e11783b014fee8cf1
 	@Override
 	public UserVO idCheck(UserVO vo) {
 		System.out.println("[MyBatis] Id Check Func is Called");
 		return (UserVO) sqlSessionTemplate.selectOne("UserDAO.getUserId", vo);
 	}
 
+<<<<<<< HEAD
 	// 유저 아이디 이메일 존재여부 확인하기.
 	@Override
 	public UserVO idAndEmailCheck(UserVO vo) {
@@ -27,6 +33,9 @@ public class LoginDAOImpl implements LoginDAO {
 	}
 
 	// 회원가입 유저 정보 삽입하기.
+=======
+	//회원가입 유저 정보 삽입하기.
+>>>>>>> f8105eba014fdfea64c1c66e11783b014fee8cf1
 	@Override
 	public void regist(UserVO vo) {
 		sqlSessionTemplate.insert("UserDAO.insertUser", vo);
@@ -86,6 +95,19 @@ public class LoginDAOImpl implements LoginDAO {
 	public void deleteAccessNum(String tokenNum) {
 		System.out.println("[MyBatis] 토큰 DELETE 수행");
 		sqlSessionTemplate.delete("AccessNum.deleteAccessNum", tokenNum);
+	}
+
+	//로그인용 유저정보 얻어오기.
+	@Override
+	public UserVO getUser(UserVO vo) {
+		return (UserVO) sqlSessionTemplate.selectOne("UserDAO.getUser", vo);
+	}
+
+	//카카오 회원 가입여부 판단. 
+	//카카오 아이디 값으로 판단하고 있으면 통과 없으면 회원가입 창으로 이동시킨다.
+	@Override
+	public UserVO getKakao(UserVO vo) {
+		return (UserVO) sqlSessionTemplate.selectOne("UserDAO.getKakao", vo);
 	}
 
 }

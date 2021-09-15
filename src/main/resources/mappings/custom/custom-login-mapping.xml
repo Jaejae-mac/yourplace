@@ -26,6 +26,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT user_id FROM member
 		WHERE user_id = #{userId}
 	</select>
+<<<<<<< HEAD
 
 	<select id="getKakao" resultMap="userResult">
 		SELECT * FROM member
@@ -38,6 +39,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE user_id = #{userId} and user_email = #{userEmail}
 	</select>
 	
+=======
+	
+	<select id="getKakao" resultMap="userResult">
+		SELECT * FROM member
+		WHERE kakao_id = #{kakaoId}
+	</select>
+
+>>>>>>> f8105eba014fdfea64c1c66e11783b014fee8cf1
 	<select id="getUser" resultMap="userResult">
 		SELECT * FROM member WHERE
 		user_id = #{userId}
